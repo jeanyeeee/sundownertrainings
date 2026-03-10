@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🍯 Honey Ice Cream Workshop – Facilitator Guide | The Sundowner</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --honey: #C49A28;
+      --amber: #9A720F;
+      --cream: #FAF7F2;
+      --mint: #2E8B7A;
+      --blush: #B5673E;
+      --dark: #1A1614;
+      --light-honey: #F5EDD8;
+      --gold-light: #F0E6C8;
+      --warm-gray: #7A7068;
+      --border: #E8E0D2;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--dark); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #F6A623 0%, #FF7F6E 100%);
+      padding: 60px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "🐝🍦🐝🍦🐝🍦🐝🍦🐝🍦";
+      position: absolute; top: 10px; left: 0; right: 0;
+      font-size: 1.6rem; letter-spacing: 12px; opacity: 0.25;
+    }
+    .hero-badge {
+      display: inline-block; background: white; color: var(--amber);
+      font-weight: 800; font-size: 0.85rem; padding: 6px 18px;
+      border-radius: 50px; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      color: white; line-height: 1.15;
+      text-shadow: 2px 4px 12px rgba(0,0,0,0.15);
+    }
+    .hero p {
+      color: rgba(255,255,255,0.92); font-size: 1.15rem;
+      margin-top: 14px; font-weight: 600;
+      max-width: 560px; margin-inline: auto;
+    }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 30px;
+      margin-top: 34px; flex-wrap: wrap;
+    }
+    .stat-pill {
+      background: rgba(255,255,255,0.22); backdrop-filter: blur(6px);
+      border: 2px solid rgba(255,255,255,0.4); border-radius: 50px;
+      padding: 10px 22px; color: white; font-weight: 700; font-size: 0.95rem;
+    }
+    .stat-pill span { font-size: 1.1rem; margin-right: 5px; }
+
+    /* NAV TABS */
+    .tab-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: white; box-shadow: 0 3px 16px rgba(0,0,0,0.09);
+      display: flex; justify-content: center; overflow-x: auto;
+    }
+    .tab-btn {
+      padding: 16px 24px; border: none; background: none;
+      font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700;
+      color: #888; cursor: pointer; border-bottom: 4px solid transparent;
+      transition: all 0.25s; white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--amber); }
+    .tab-btn.active { color: var(--amber); border-bottom-color: var(--honey); }
+
+    /* SECTIONS */
+    .section { display: none; padding: 50px 20px; max-width: 880px; margin: 0 auto; }
+    .section.active { display: block; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--amber); margin-bottom: 8px; }
+    .section-sub { color: #777; font-size: 1rem; margin-bottom: 30px; }
+
+    /* OVERVIEW CARDS */
+    .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 36px; }
+    .ov-card {
+      background: white; border-radius: 4px; padding: 28px 24px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+      border-top: 2px solid var(--honey);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .ov-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.09); }
+    .ov-card .icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .ov-card h3 { font-size: 0.68rem; font-weight: 600; color: var(--amber); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 2.5px; }
+    .ov-card p { font-size: 0.88rem; color: var(--warm-gray); line-height: 1.7; }
+
+    .highlight-box {
+      background: var(--gold-light);
+      border-left: 3px solid var(--honey);
+      border-radius: 14px;
+      padding: 24px 28px; margin-bottom: 28px;
+      font-size: 0.92rem; line-height: 1.8; color: #5a3e00;
+      font-family: 'Inter', sans-serif;
+    }
+    .highlight-box strong { color: var(--amber); font-weight: 600; }
+
+    .facilitator-tip {
+      background: #EEF7F5;
+      border-left: 3px solid var(--mint);
+      border-radius: 14px;
+      padding: 18px 24px;
+      font-size: 0.86rem; color: #1a5040; margin-top: 24px;
+      line-height: 1.75;
+    }
+    .facilitator-tip::before { content: "💡 Facilitator Tip  ·  "; font-weight: 600; letter-spacing: 0.3px; }
+
+    /* INGREDIENTS */
+    .ingredient-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; margin-bottom: 30px; }
+    .ing-card {
+      background: white; border-radius: 16px; padding: 22px 16px;
+      text-align: center;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+      cursor: pointer; transition: all 0.3s;
+      border: 1px solid var(--border);
+    }
+    .ing-card:hover, .ing-card.flipped {
+      border-color: var(--honey);
+      box-shadow: 0 6px 24px rgba(196,154,40,0.15);
+      transform: translateY(-2px);
+    }
+    .ing-card .emoji { font-size: 2rem; margin-bottom: 12px; }
+    .ing-card .name { font-weight: 600; color: var(--dark); font-size: 0.92rem; margin-bottom: 4px; letter-spacing: 0.2px; }
+    .ing-card .qty { font-size: 0.78rem; color: var(--amber); font-weight: 600; margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
+    .ing-card .note { font-size: 0.8rem; color: var(--warm-gray); line-height: 1.6; display: none; text-align: left; }
+    .ing-card.flipped .note { display: block; }
+    .ing-card .tap-hint { font-size: 0.7rem; color: #CCC5BB; margin-top: 8px; letter-spacing: 0.5px; }
+
+    /* TOOLS */
+    .tools-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+    .tool-item {
+      background: white; border-radius: 16px; padding: 18px 20px;
+      display: flex; align-items: flex-start; gap: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s;
+    }
+    .tool-item:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .tool-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+    .tool-info h4 { font-size: 0.85rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; letter-spacing: 0.2px; }
+    .tool-info p { font-size: 0.8rem; color: var(--warm-gray); line-height: 1.65; }
+
+    /* EXPERIENCE FLOW */
+    .flow-timeline { position: relative; padding-left: 40px; }
+    .flow-timeline::before {
+      content: ''; position: absolute; left: 16px; top: 0; bottom: 0;
+      width: 4px; background: linear-gradient(to bottom, var(--honey), var(--blush)); border-radius: 4px;
+    }
+    .flow-step {
+      position: relative; margin-bottom: 24px;
+      background: white; border-radius: 18px; padding: 22px 24px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.07); cursor: pointer; transition: all 0.25s;
+    }
+    .flow-step:hover { transform: translateX(4px); box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
+    .flow-step::before {
+      content: attr(data-step);
+      position: absolute; left: -42px; top: 20px;
+      width: 32px; height: 32px;
+      background: var(--honey); color: white;
+      font-family: 'Playfair Display', serif; font-size: 1rem;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    }
+    .flow-step .step-header { display: flex; align-items: center; justify-content: space-between; }
+    .flow-step .step-emoji { font-size: 1.6rem; margin-right: 12px; }
+    .flow-step h3 { font-size: 1.05rem; font-weight: 800; color: var(--dark); }
+    .flow-step .duration-tag {
+      background: var(--light-honey); color: var(--amber);
+      font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 50px; flex-shrink: 0;
+    }
+    .flow-step .step-detail { margin-top: 14px; font-size: 0.93rem; color: #555; line-height: 1.65; display: none; }
+    .flow-step.open .step-detail { display: block; }
+    .flow-step .toggle-icon { font-size: 1.1rem; margin-left: 10px; color: var(--honey); transition: transform 0.2s; }
+    .flow-step.open .toggle-icon { transform: rotate(180deg); }
+    .step-tip {
+      background: #e8faf7; border-radius: 10px; padding: 10px 14px;
+      margin-top: 12px; font-size: 0.88rem; color: #1a5a50;
+    }
+    .step-tip::before { content: "🎯 Facilitator: "; font-weight: 800; }
+
+    /* ===== ICE CREAM SCALE ===== */
+    .icecream-scale-wrapper {
+      background: white; border-radius: 20px;
+      padding: 28px 24px; margin-top: 18px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
+    .icecream-scale-title {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem;
+      color: var(--amber); margin-bottom: 20px; text-align: center;
+    }
+    .scale-track-wrap { position: relative; padding: 0 10px; margin-bottom: 10px; }
+    .scale-track {
+      height: 18px; border-radius: 50px;
+      background: linear-gradient(90deg, #a8d8f0 0%, #6ec6a0 50%, #F6A623 100%);
+      position: relative;
+    }
+    .scale-markers {
+      display: flex; justify-content: space-between;
+      margin-top: 8px; padding: 0 2px;
+    }
+    .scale-marker { text-align: center; flex: 1; }
+    .scale-marker .m-emoji { font-size: 1.6rem; }
+    .scale-marker .m-label {
+      font-family: 'Playfair Display', serif; font-size: 1rem;
+      margin-top: 4px;
+    }
+    .scale-marker:nth-child(1) .m-label { color: #5aadd6; }
+    .scale-marker:nth-child(2) .m-label { color: #3aaa78; }
+    .scale-marker:nth-child(3) .m-label { color: var(--amber); }
+
+    .ic-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px; }
+    .ic-card {
+      border-radius: 16px; padding: 18px 14px; text-align: center;
+      cursor: pointer; transition: all 0.25s; border: 3px solid transparent;
+    }
+    .ic-card:hover { transform: translateY(-4px); }
+    .ic-card.sorbet { background: #e8f6fd; }
+    .ic-card.sorbet:hover, .ic-card.sorbet.selected { border-color: #5aadd6; }
+    .ic-card.gelato { background: #e6f8f1; }
+    .ic-card.gelato:hover, .ic-card.gelato.selected { border-color: #3aaa78; }
+    .ic-card.icecream { background: var(--light-honey); }
+    .ic-card.icecream:hover, .ic-card.icecream.selected { border-color: var(--honey); }
+    .ic-card .ic-emoji { font-size: 2.4rem; margin-bottom: 8px; }
+    .ic-card .ic-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 10px; }
+    .ic-card.sorbet .ic-name { color: #5aadd6; }
+    .ic-card.gelato .ic-name { color: #3aaa78; }
+    .ic-card.icecream .ic-name { color: var(--amber); }
+    .ic-card .ic-detail { display: none; font-size: 0.83rem; color: #555; line-height: 1.55; text-align: left; }
+    .ic-card.selected .ic-detail { display: block; }
+
+    /* ATTRIBUTE BARS */
+    .attr-bars { margin-top: 28px; }
+    .attr-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .attr-label { font-size: 0.82rem; font-weight: 800; color: #777; width: 80px; text-align: right; flex-shrink: 0; text-transform: uppercase; letter-spacing: 0.5px; }
+    .attr-track { flex: 1; height: 10px; background: #f0f0f0; border-radius: 10px; overflow: visible; position: relative; display: flex; gap: 4px; align-items: center; }
+    .attr-segment {
+      height: 10px; border-radius: 10px; flex-shrink: 0; position: relative;
+      transition: width 0.6s ease;
+    }
+    .attr-segment .seg-label {
+      position: absolute; top: -22px; font-size: 0.72rem; font-weight: 800;
+      white-space: nowrap;
+    }
+    .seg-sorbet { background: #a8d8f0; }
+    .seg-sorbet .seg-label { color: #5aadd6; left: 0; }
+    .seg-gelato { background: #6ec6a0; }
+    .seg-gelato .seg-label { color: #3aaa78; left: 0; }
+    .seg-icecream { background: var(--honey); }
+    .seg-icecream .seg-label { color: var(--amber); left: 0; }
+
+    /* CHECKLIST */
+    .checklist { list-style: none; }
+    .checklist li {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 18px; background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 8px;
+      cursor: pointer; font-size: 0.86rem;
+      color: var(--dark); letter-spacing: 0.1px;
+      transition: opacity 0.25s, background 0.2s;
+    }
+    .checklist li:hover { background: var(--cream); }
+    .checklist li.checked { opacity: 0.4; text-decoration: line-through; }
+    .check-box {
+      width: 20px; height: 20px;
+      border: 1.5px solid #C4B89A;
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 0.75rem; color: white;
+    }
+    .checklist li.checked .check-box { background: var(--honey); border-color: var(--honey); }
+
+    .progress-bar-wrap { margin-bottom: 36px; }
+    .progress-label { font-size: 0.72rem; color: var(--warm-gray); margin-bottom: 8px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
+    .progress-bar-bg { height: 3px; background: var(--border); border-radius: 8px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--honey), var(--blush)); border-radius: 50px; transition: width 0.5s ease; }
+
+    footer {
+      background: #0F0C09; color: rgba(255,255,255,0.4);
+      text-align: center; padding: 40px 20px; font-size: 0.78rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      font-family: 'Inter', sans-serif; font-weight: 400;
+    }
+    footer strong { color: rgba(196,154,40,0.8); font-weight: 500; }
+
+
+
+    /* Pink Watch-Out Notes */
+    .pink-note {
+      background: linear-gradient(135deg, #ffe0ec, #ffd0e4);
+      border-left: 5px solid #e05080;
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-top: 10px;
+      font-size: 0.86rem;
+      color: #7a1a40;
+      line-height: 1.65;
+    }
+    .pink-note::before {
+      content: "⚠️ Watch Out: ";
+      font-weight: 800;
+      color: #c0204a;
+    }
+    .pink-note strong { color: #c0204a; }
+
+    /* ====== MOBILE IMPROVEMENTS ====== */
+    @media (max-width: 768px) {
+      .hero { padding: 70px 16px 60px; min-height: 420px; }
+
+      .hero-stats { gap: 10px; }
+      .stat-pill { padding: 8px 14px; font-size: 0.82rem; }
+      .overview-grid { grid-template-columns: 1fr; }
+      .ingredient-grid { grid-template-columns: repeat(2, 1fr); }
+      .tools-list { grid-template-columns: 1fr; }
+      .ic-cards { grid-template-columns: 1fr; }
+      .attr-label { width: 60px; font-size: 0.75rem; }
+      .flow-step { padding: 16px 14px; }
+      .flow-step h3 { font-size: 0.92rem; }
+      .flow-step .step-emoji { font-size: 1.2rem; margin-right: 8px; }
+      .flow-step::before { left: -36px; width: 28px; height: 28px; font-size: 0.85rem; }
+      .flow-timeline { padding-left: 32px; }
+      .flow-timeline::before { left: 12px; }
+      .duration-tag { font-size: 0.72rem; padding: 3px 8px; }
+      .section { padding: 30px 14px; }
+      .section-title { font-size: 1.6rem; }
+      .tab-btn { padding: 12px 10px; font-size: 0.78rem; }
+      .bee-species-grid { grid-template-columns: 1fr !important; }
+      .bee-role-grid { grid-template-columns: 1fr !important; }
+      .hive-layers { flex-direction: column !important; }
+      .flow-divider { margin: 24px -14px; }
+      .step-header { flex-wrap: wrap; gap: 8px; }
+      .step-header > div:first-child { flex: 1; min-width: 0; }
+      .step-header h3 { font-size: 0.9rem; line-height: 1.3; }
+      .duty-grid { grid-template-columns: 1fr !important; }
+      .lifecycle-steps { flex-direction: column !important; gap: 0 !important; }
+      .lifecycle-step { flex-direction: row !important; align-items: center !important; gap: 14px !important; }
+      .lifecycle-arrow { transform: rotate(90deg) !important; margin: 0 !important; font-size: 1.2rem !important; }
+    }
+    @media (max-width: 400px) {
+      .ingredient-grid { grid-template-columns: 1fr; }
+      .tab-btn { padding: 10px 8px; font-size: 0.72rem; }
+      .ic-panel-btns { flex-direction: column !important; }
+    }
+
+    /* Flow section divider */
+    .flow-divider {
+      margin: 32px -40px;
+      padding: 18px 40px;
+      background: linear-gradient(135deg, #2C2C2C 0%, #3a3a3a 100%);
+      display: flex; align-items: center; gap: 14px;
+      position: relative; z-index: 2;
+    }
+    .flow-divider-icon { font-size: 2rem; flex-shrink: 0; }
+    .flow-divider h4 {
+      font-family: 'Playfair Display', serif;
+      color: white; font-size: 1.25rem; margin-bottom: 2px;
+    }
+    .flow-divider p { color: #aaa; font-size: 0.82rem; }
+
+    /* Bee species cards */
+    .bee-species-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin: 20px 0;
+    }
+    .bee-species-card {
+      background: white; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+      transition: transform 0.25s;
+    }
+    .bee-species-card:hover { transform: translateY(-4px); }
+    .bee-species-card img { width: 100%; height: 160px; object-fit: cover; }
+    .bee-species-info { padding: 14px; }
+    .bee-species-info .sci-name { font-style: italic; font-size: 0.78rem; color: #aaa; margin-bottom: 4px; }
+    .bee-species-info .common-name { font-weight: 800; font-size: 0.95rem; color: var(--dark); margin-bottom: 6px; }
+    .bee-species-info .tag {
+      display: inline-block; font-size: 0.72rem; font-weight: 800;
+      padding: 3px 10px; border-radius: 50px; margin-bottom: 8px;
+    }
+    .tag-resident { background: #e8faf7; color: var(--mint); }
+    .tag-wild { background: var(--light-honey); color: var(--amber); }
+    .bee-species-info p { font-size: 0.82rem; color: #666; line-height: 1.5; }
+
+    /* Bee role cards */
+    .bee-role-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin: 16px 0;
+    }
+    .bee-role-card {
+      background: white; border-radius: 14px; padding: 18px 14px;
+      text-align: center; box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+      border-top: 4px solid var(--honey);
+    }
+    .bee-role-card .role-emoji { font-size: 2.5rem; margin-bottom: 10px; }
+    .bee-role-card h4 { font-weight: 800; font-size: 0.92rem; color: var(--dark); margin-bottom: 6px; }
+    .bee-role-card p { font-size: 0.8rem; color: #666; line-height: 1.5; }
+    .bee-role-card .gender-tag {
+      display: inline-block; margin-top: 8px; font-size: 0.72rem;
+      font-weight: 800; padding: 2px 10px; border-radius: 50px;
+    }
+
+    /* Lifecycle */
+    .lifecycle-steps {
+      display: flex; gap: 8px; align-items: center;
+      overflow-x: auto; padding: 10px 0; margin: 16px 0;
+    }
+    .lifecycle-step {
+      display: flex; flex-direction: column; align-items: center;
+      min-width: 110px; gap: 8px;
+    }
+    .lifecycle-icon {
+      width: 70px; height: 70px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; flex-shrink: 0;
+    }
+    .lifecycle-step h5 { font-weight: 800; font-size: 0.85rem; color: var(--dark); text-align: center; }
+    .lifecycle-step p { font-size: 0.75rem; color: #777; text-align: center; line-height: 1.4; }
+    .lifecycle-arrow { font-size: 1.5rem; color: #ddd; flex-shrink: 0; }
+
+    /* Duty cards */
+    .duty-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin: 16px 0;
+    }
+    .duty-card {
+      border-radius: 16px; padding: 18px 14px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    }
+    .duty-card .duty-num {
+      font-family: 'Playfair Display', serif; font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    .duty-card h4 { font-weight: 800; font-size: 0.92rem; margin-bottom: 6px; }
+    .duty-card p { font-size: 0.82rem; line-height: 1.55; }
+
+    /* Funfact box */
+    .funfact {
+      background: linear-gradient(135deg, #FFF1D0, #ffe8b4);
+      border-radius: 14px; padding: 16px 20px; margin: 14px 0;
+      border-left: 4px solid var(--honey);
+    }
+    .funfact::before { content: "🐝 Fun Fact: "; font-weight: 800; color: var(--amber); }
+    .funfact { font-size: 0.9rem; color: #5a3e00; line-height: 1.65; }
+
+    .quiz-box {
+      background: linear-gradient(135deg, #e8f6fd, #d4edf9);
+      border-radius: 14px; padding: 16px 20px; margin: 14px 0;
+      border-left: 4px solid #5aadd6; cursor: pointer;
+    }
+    .quiz-box::before { content: "🤔 Question: "; font-weight: 800; color: #3a8ab5; }
+    .quiz-box { font-size: 0.9rem; color: #1a4a65; line-height: 1.65; }
+    .quiz-answer { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(90,173,214,0.3); font-size: 0.88rem; color: #2a6a90; }
+    .quiz-box.revealed .quiz-answer { display: block; }
+
+    /* Hive layers */
+    .hive-layers {
+      display: flex; flex-direction: column; gap: 0;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+      margin: 16px 0;
+    }
+    .hive-layer {
+      padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start;
+    }
+    .hive-layer-icon { font-size: 2rem; flex-shrink: 0; }
+    .hive-layer h4 { font-weight: 800; font-size: 0.92rem; margin-bottom: 4px; }
+    .hive-layer p { font-size: 0.84rem; line-height: 1.55; }
+
+    /* Prep board */
+    .prep-board {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px; margin: 16px 0;
+    }
+    .prep-item {
+      background: white; border-radius: 14px; padding: 16px 14px;
+      text-align: center; box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    }
+    .prep-item .p-emoji { font-size: 2rem; margin-bottom: 8px; }
+    .prep-item h4 { font-size: 0.88rem; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .prep-item p { font-size: 0.78rem; color: #777; line-height: 1.4; }
+
+    @media (max-width: 600px) {
+      .tab-btn { padding: 14px 14px; font-size: 0.85rem; }
+      .hero h1 { font-size: 2rem; }
+      .ic-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🍯 Facilitator Training Guide</div>
+  <h1>Honey Ice Cream<br>Workshop 🍦</h1>
+  <p>From Honeycomb to Cone — a sweet, buzzy food experience at The Sundowner</p>
+  <div class="hero-stats">
+    <div class="stat-pill"><span>⏱️</span> 2 Hours</div>
+    <div class="stat-pill"><span>👥</span> Up to 6 Guests</div>
+    <div class="stat-pill"><span>⭐</span> 4.8 Rating (241 Reviews)</div>
+    <div class="stat-pill"><span>📍</span> Every Sunday, 2:30 PM</div>
+  </div>
+</div>
+
+<!-- STICKY TAB NAV -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="switchTab('overview', this)">🐝 Overview</button>
+  <button class="tab-btn" onclick="switchTab('ingredients', this)">🥄 Ingredients</button>
+  <button class="tab-btn" onclick="switchTab('tools', this)">🧰 Tools</button>
+  <button class="tab-btn" onclick="switchTab('flow', this)">🗺️ Experience Flow</button>
+  <button class="tab-btn" onclick="switchTab('prep', this)">✅ Pre-Session Prep</button>
+</nav>
+
+<!-- ===== OVERVIEW ===== -->
+<section id="overview" class="section active">
+  <h2 class="section-title">🐝 Experience Overview</h2>
+  <p class="section-sub">Everything you need to understand this experience before you lead it.</p>
+  <div class="highlight-box">
+    <strong>The Big Idea:</strong> Guests go on a sweet journey — from learning about bees and their incredible world, to getting hands-on with ice cream making using <strong>real local honey</strong>. By the end, they leave with a scoop of ice cream they made themselves and a whole new appreciation for our tiny buzzy friends. 🐝🍦
+  </div>
+  <div class="overview-grid">
+    <div class="ov-card"><div class="icon">🎯</div><h3>Learning Goals</h3><p>Guests understand how bees produce honey, learn the science of ice cream making, and experience the joy of creating something delicious from scratch.</p></div>
+    <div class="ov-card"><div class="icon">🌿</div><h3>Vibe & Atmosphere</h3><p>Relaxed, curious, and fun! Think rooftop garden energy — warm golden hour tones, buzzing curiosity, and sweet rewards. Make it feel like a discovery.</p></div>
+    <div class="ov-card"><div class="icon">👨‍👩‍👧</div><h3>Who's Coming</h3><p>Couples, families (12+), foodies, and nature lovers. Groups of 4–6. Expect mixed comfort levels with both bees and cooking — keep it welcoming!</p></div>
+    <div class="ov-card"><div class="icon">🏆</div><h3>The Wow Moment</h3><p>When guests take their very first lick of the ice cream they made with honey harvested right from the hive on site. That's the moment of magic!</p></div>
+  </div>
+  <div class="facilitator-tip">Start by asking guests: "Who here has ever thought about where honey actually comes from?" — it immediately sparks curiosity and sets the stage for the bee introduction.</div>
+  <div style="margin-top:28px;">
+    <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:10px;color:var(--amber);">🌟 What Makes This Special</h3>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+      <li style="background:white;border-radius:12px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">🍯 <strong>Hyper-local honey</strong> — sourced from the actual hive on the Sundowner rooftop</li>
+      <li style="background:white;border-radius:12px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">🔬 <strong>Science meets food</strong> — guests learn the chemistry behind why ice cream freezes the way it does</li>
+      <li style="background:white;border-radius:12px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">📜 <strong>Take-home recipe</strong> — guests leave with the recipe and pro tips to recreate it at home</li>
+      <li style="background:white;border-radius:12px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">🐝 <strong>Community impact</strong> — hosted by a women-led, wildlife-protecting team championing urban beekeeping</li>
+    </ul>
+  </div>
+</section>
+
+<section id="ingredients" class="section">
+  <h2 class="section-title">🥄 Ingredients</h2>
+  <p class="section-sub">Two recipes, one magical experience. Tap any card to reveal the role of each ingredient!</p>
+
+  <!-- ICE CREAM RECIPE -->
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;margin-top:10px;">
+    <div style="background:var(--honey);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">🍦</div>
+    <h3 style="font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--amber);">Honey Ice Cream Base</h3>
+    <span style="background:var(--light-honey);color:var(--amber);font-size:0.78rem;font-weight:800;padding:4px 12px;border-radius:50px;flex-shrink:0;">Makes ~1 litre</span>
+  </div>
+
+  <div class="ingredient-grid">
+    <div class="ing-card" onclick="this.classList.toggle('flipped')">
+      <div class="emoji">🍯</div>
+      <div class="name">Honey</div>
+      <div class="qty">170g</div>
+      <div class="note">The star flavour! Warmed gently to bring out its floral complexity. Local Sundowner honey adds a unique terroir you won't find in any store-bought tub.</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+    <div class="ing-card" onclick="this.classList.toggle('flipped')">
+      <div class="emoji">🥚</div>
+      <div class="name">Egg Yolks</div>
+      <div class="qty">9 yolks</div>
+      <div class="note">The emulsifier and thickener. Yolks contain lecithin, which binds fat and water together for a silky, smooth custard base — the secret to professional ice cream.</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+    <div class="ing-card" onclick="this.classList.toggle('flipped')">
+      <div class="emoji">🍬</div>
+      <div class="name">Granulated Sugar</div>
+      <div class="qty">50g</div>
+      <div class="note">Works with honey to sweeten and lower the freezing point of the mixture — helping the final ice cream stay scoopable rather than rock hard.</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+    <div class="ing-card" onclick="this.classList.toggle('flipped')">
+      <div class="emoji">🥛</div>
+      <div class="name">Heavy Cream</div>
+      <div class="qty">528g</div>
+      <div class="note">The richness backbone. High fat content coats ice crystals during churning, creating that unmistakably smooth, indulgent mouthfeel. This is where "ice cream" earns its name.</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+    <div class="ing-card" onclick="this.classList.toggle('flipped')">
+      <div class="emoji">🧴</div>
+      <div class="name">Whole Milk</div>
+      <div class="qty">250g</div>
+      <div class="note">Balances the heaviness of cream. The water content in milk helps regulate texture — too much cream alone would make it greasy rather than creamy.</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+    <div class="ing-card" onclick="this.classList.toggle('flipped')">
+      <div class="emoji">🫙</div>
+      <div class="name">Crème Fraîche</div>
+      <div class="qty">110g</div>
+      <div class="note">The secret weapon! Whisked in at the end, crème fraîche adds a subtle tang that cuts through the sweetness and gives the ice cream its distinctive depth of flavour.</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+    <div class="ing-card" onclick="this.classList.toggle('flipped')">
+      <div class="emoji">🧂</div>
+      <div class="name">Salt</div>
+      <div class="qty">2 pinches</div>
+      <div class="note">Never skip the salt! It amplifies sweetness and balances all the flavours. A dessert without salt tastes flat — this tiny addition makes everything sing.</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+
+    <div class="ing-card" onclick="this.classList.toggle('flipped')">
+      <div class="emoji">📄</div>
+      <div class="name">Baking Paper</div>
+      <div class="qty">1–2 sheets</div>
+      <div class="note">Essential for the honeycomb! Line the tray before you start boiling — you won't have time to do it once the caramel is ready. Non-stick surface ensures clean release after setting.</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+  </div>
+
+  <!-- HONEYCOMB RECIPE -->
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;margin-top:36px;">
+    <div style="background:#FF7F6E;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">🍬</div>
+    <h3 style="font-family:'Fredoka One',cursive;font-size:1.4rem;color:#e05a3a;">Honeycomb Topping</h3>
+    <span style="background:#fff0ec;color:#e05a3a;font-size:0.78rem;font-weight:800;padding:4px 12px;border-radius:50px;flex-shrink:0;">The Crunch Factor ✨</span>
+  </div>
+
+  <div class="ingredient-grid">
+    <div class="ing-card" onclick="this.classList.toggle('flipped')" style="border-top-color:#FF7F6E;">
+      <div class="emoji">🍬</div>
+      <div class="name">Caster Sugar</div>
+      <div class="qty">200g</div>
+      <div class="note">The base of the honeycomb. Boiled to a specific temperature to form a hard caramel. Caster sugar dissolves more evenly than granulated, giving a cleaner, more consistent result.</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+    <div class="ing-card" onclick="this.classList.toggle('flipped')" style="border-top-color:#FF7F6E;">
+      <div class="emoji">🍯</div>
+      <div class="name">Honey</div>
+      <div class="qty">75g</div>
+      <div class="note">Adds flavour depth and a slight chewiness to the honeycomb. Using real honey (vs golden syrup) creates a more complex, floral caramel flavour that pairs beautifully with the ice cream.</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+    <div class="ing-card" onclick="this.classList.toggle('flipped')" style="border-top-color:#FF7F6E;">
+      <div class="emoji">🫧</div>
+      <div class="name">Baking Soda</div>
+      <div class="qty">2 tsp</div>
+      <div class="note">The magic ingredient! When added to hot caramel, baking soda reacts and releases CO₂ gas bubbles — this is what creates the iconic airy, crunchy honeycomb structure.</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+    <div class="ing-card" onclick="this.classList.toggle('flipped')" style="border-top-color:#FF7F6E;">
+      <div class="emoji">🧪</div>
+      <div class="name">Cream of Tartar</div>
+      <div class="qty">¼ tsp</div>
+      <div class="note">An acid that prevents the sugar from re-crystallising during cooking. Without it, the honeycomb turns grainy instead of glassy. A small amount goes a long way!</div>
+      <div class="tap-hint">👆 Tap to learn more</div>
+    </div>
+  </div>
+
+  <div class="facilitator-tip" style="margin-top:10px;">
+    Before the session, lay out both sets of ingredients separately with clear labels — "Ice Cream" and "Honeycomb". Guests appreciate the visual organisation and it makes the two-recipe structure feel intentional and professional.
+  </div>
+</section>
+
+<section id="tools" class="section">
+  <h2 class="section-title">🧰 Tools & Equipment</h2>
+  <p class="section-sub">Know your kit before the session. Everything is provided on-site — check it all 30 min before guests arrive.</p>
+
+  <!-- ICE CREAM TOOLS -->
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+    <div style="background:var(--honey);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">🍦</div>
+    <h3 style="font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--amber);">Ice Cream Making</h3>
+  </div>
+
+  <ul class="tools-list" style="margin-bottom:40px;">
+    <li class="tool-item">
+      <div class="tool-icon">📦</div>
+      <div class="tool-info">
+        <h4>Styrofoam Ice Cream Box</h4>
+        <p>The insulated star of the show! The ice cream mixture bowl sits inside the Styrofoam box packed with ice and rock salt. The insulation keeps the cold concentrated for a faster, more even freeze — no machine needed for this part.</p>
+      </div>
+    </li>
+    <li class="tool-item">
+      <div class="tool-icon">🥄</div>
+      <div class="tool-info">
+        <h4>Measuring Spoons & Cups</h4>
+        <p>For accurate ingredient portions. Getting the ratio right is critical — too much honey affects the freezing point and final texture.</p>
+      </div>
+    </li>
+    <li class="tool-item">
+      <div class="tool-icon">🍳</div>
+      <div class="tool-info">
+        <h4>Saucepan (Heavy-Based)</h4>
+        <p>For warming the cream, milk and honey, and cooking the custard base. A heavy base ensures even heat distribution — no hot spots that could scramble the eggs.</p>
+      </div>
+    </li>
+    <li class="tool-item">
+      <div class="tool-icon">🥣</div>
+      <div class="tool-info">
+        <h4>Mixing Bowls</h4>
+        <p>One large bowl for the ice bath (to cool the custard), one medium bowl for whisking egg yolks and sugar. Heat-safe glass or stainless steel recommended.</p>
+      </div>
+    </li>
+    <li class="tool-item">
+      <div class="tool-icon">🫆</div>
+      <div class="tool-info">
+        <h4>Whisk</h4>
+        <p>For ribboning the egg yolks and sugar, and for continuous stirring of the custard base over heat. A balloon whisk gives the best control and prevents lumps.</p>
+      </div>
+    </li>
+    <li class="tool-item">
+      <div class="tool-icon">🧊</div>
+      <div class="tool-info">
+        <h4>Ice & Rock Salt</h4>
+        <p>Packed around the ice cream bowl inside the Styrofoam box. Rock salt lowers the freezing point of ice dramatically — down to around -10°C — enabling the mixture to freeze without a machine.</p>
+      </div>
+    </li>
+    <li class="tool-item">
+      <div class="tool-icon">⚙️</div>
+      <div class="tool-info">
+        <h4>Cuisinart Compressor Machine</h4>
+        <p>Our ice cream churner. Ready to use at any time — no pre-freeze needed. Pour in the cooled custard base and let it churn to a perfect soft-serve consistency in ~20–25 minutes.</p>
+      </div>
+    </li>
+    <li class="tool-item">
+      <div class="tool-icon">🍦</div>
+      <div class="tool-info">
+        <h4>Ice Cream Scoop</h4>
+        <p>For the satisfying final scoop into bowls. Run under warm water before scooping for a clean, rounded presentation.</p>
+      </div>
+    </li>
+    <li class="tool-item">
+      <div class="tool-icon">🥣</div>
+      <div class="tool-info">
+        <h4>Serving Bowls</h4>
+        <p>Bowls only for serving — allows guests to pile on toppings generously without worrying about balance. Have them pre-arranged at the toppings station looking inviting.</p>
+      </div>
+    </li>
+    <li class="tool-item">
+      <div class="tool-icon">🍬</div>
+      <div class="tool-info">
+        <h4>Baking Tray (Lined)</h4>
+        <p>For pouring and setting the honeycomb. Line with baking paper — do not grease. The honeycomb should peel off cleanly once fully cooled and set.</p>
+      </div>
+    </li>
+    <li class="tool-item">
+      <div class="tool-icon">🫙</div>
+      <div class="tool-info">
+        <h4>Freezer-Safe Tub with Lid</h4>
+        <p>For transferring the churned ice cream to set overnight. Label with the date. Have one pre-labelled tub ready per batch.</p>
+      </div>
+    </li>
+    <li class="tool-item">
+      <div class="tool-icon">🧻</div>
+      <div class="tool-info">
+        <h4>Towels & Cleanup Supplies</h4>
+        <p>Ice cream making is deliciously messy! Keep paper towels, a damp cloth, and a small bin within reach throughout the session.</p>
+      </div>
+    </li>
+  </ul>
+
+  <!-- BEE ENCOUNTER TOOLS -->
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+    <div style="background:#3DBDA7;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">🐝</div>
+    <h3 style="font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--mint);">Bee Encounter</h3>
+  </div>
+
+  <ul class="tools-list" style="margin-bottom:20px;">
+    <li class="tool-item" style="border-left:4px solid var(--mint);">
+      <div class="tool-icon">🥼</div>
+      <div class="tool-info">
+        <h4>Bee Suits (1 per guest + facilitator)</h4>
+        <p>Full-body white suits with integrated veil. White is calming to bees. Check all zips — front, cuffs, and veil — are fully sealed before approaching the hive. Have a range of sizes ready.</p>
+      </div>
+    </li>
+    <li class="tool-item" style="border-left:4px solid var(--mint);">
+      <div class="tool-icon">🧤</div>
+      <div class="tool-info">
+        <h4>Beekeeping Gloves + Powder</h4>
+        <p>Long-gauntlet gloves that overlap the suit sleeves for a full seal. Dust with powder before putting on — this helps them slide on easily and ensures a bee-proof fit at the wrists. Size up if unsure.</p>
+      </div>
+    </li>
+    <li class="tool-item" style="border-left:4px solid var(--mint);">
+      <div class="tool-icon">💨</div>
+      <div class="tool-info">
+        <h4>Bee Smoker</h4>
+        <p>Loaded and lit with <strong>wet leaves</strong> for cool, gentle smoke. The wet leaves slow the burn and produce a thick, cooler smoke that calms bees without heat stress. Always test the smoke temperature on your wrist before use — it should feel cool.</p>
+      </div>
+    </li>
+    <li class="tool-item" style="border-left:4px solid var(--mint);">
+      <div class="tool-icon">🍃</div>
+      <div class="tool-info">
+        <h4>Wet Leaves (Smoker Fuel)</h4>
+        <p>Collected fresh before the session. Soak in water for 10–15 minutes for optimal moisture level. Dry leaves burn too hot and too fast — wet leaves give a slow, cool, steady smoke ideal for a calm hive visit.</p>
+      </div>
+    </li>
+    <li class="tool-item" style="border-left:4px solid var(--mint);">
+      <div class="tool-icon">📋</div>
+      <div class="tool-info">
+        <h4>Bee Board (Educational Display)</h4>
+        <p>Set up near the Apiary before the session. Should include: bee species comparison, lifecycle diagram, hive anatomy, and fun facts. Acts as a reference point during the theory section and while guests observe the hive.</p>
+      </div>
+    </li>
+    <li class="tool-item" style="border-left:4px solid var(--mint);">
+      <div class="tool-icon">🪵</div>
+      <div class="tool-info">
+        <h4>Hive Tool (J-Tool / Hive Opener)</h4>
+        <p>Used to gently pry apart frames sealed by propolis (bee glue). Essential for opening the hive without damaging comb or disturbing the colony more than needed. Keep it clean between sessions.</p>
+      </div>
+    </li>
+  </ul>
+
+  <div class="facilitator-tip">
+    Do separate equipment checks for each phase: run through the ice cream kit first (30 min before), then do a dedicated bee encounter kit check 15 min before heading to the Apiary — suits fitted, smoker lit and tested, Bee Board in position.
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE FLOW ===== -->
+<section id="flow" class="section">
+  <h2 class="section-title">🗺️ Experience Flow</h2>
+  <p class="section-sub">Click each step to expand the full facilitator notes and tips.</p>
+
+  <div class="flow-timeline">
+
+    <!-- STEP 1: Welcome -->
+    <div class="flow-step" data-step="1" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;">
+          <span class="step-emoji">👋</span>
+          <h3>Welcome to The Sundowner</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="duration-tag">⏱ 5 min</span>
+          <span class="toggle-icon">▼</span>
+        </div>
+      </div>
+      <div class="step-detail">
+        <p>Greet guests as they arrive and invite them to settle in. Open with warmth and curiosity — this sets the entire tone for what follows. Introduce <strong>The Sundowner</strong> as more than just a venue: it's a living space dedicated to exploring the origin of food and our relationship with nature.</p>
+
+        <div style="background:var(--light-honey);border-radius:14px;padding:18px 20px;margin:16px 0;">
+          <p style="font-weight:800;color:var(--amber);margin-bottom:10px;">🎤 Suggested Opening Script</p>
+          <p style="font-style:italic;color:#5a3e00;line-height:1.8;">
+            "Welcome to The Sundowner! I'm [Name], and today we're going on a delicious little adventure. This place is all about one simple question: <strong>where does our food actually come from?</strong> Before it reaches our plates, before it lands in a jar or on a shelf — what's the story? Today, we're going to trace honey all the way from the hive to your ice cream cone. And the best part? You're making it yourself."
+          </p>
+        </div>
+
+        <p><strong>Key things to cover in your introduction:</strong></p>
+        <ul style="margin:10px 0 0 20px;line-height:2.2;">
+          <li>A brief history of The Sundowner and its food origins mission</li>
+          <li>What guests will experience today — the journey arc from hive → honey → ice cream</li>
+          <li>A teaser: <em>"We'll be meeting the world's most important pollinators up close later — our resident honeybees!"</em></li>
+          <li>Any housekeeping (toilets, allergies, session timing)</li>
+        </ul>
+
+        <div style="background:#fff3e0;border-radius:12px;padding:14px 18px;margin-top:14px;border-left:4px solid var(--honey);">
+          <p style="font-weight:800;color:var(--amber);font-size:0.9rem;">🐝 BEE ENCOUNTER TEASER</p>
+          <p style="font-size:0.88rem;color:#5a3e00;margin-top:6px;line-height:1.65;">
+            Honeybees are the <strong>world's largest pollinators</strong> — responsible for 1 in every 3 bites of food we eat. Drop this fact early and let it linger. Tell guests they'll get to meet the bees later, face to face. This creates anticipation that carries through the whole session!
+          </p>
+        </div>
+
+        <div class="step-tip">Keep this introduction light and energetic. Resist the urge to over-explain — you want guests leaning in with curiosity, not sitting back with information overload. Plant seeds; don't deliver a lecture.</div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Ice Cream Types -->
+    <div class="flow-step" data-step="2" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;">
+          <span class="step-emoji">🍦</span>
+          <h3>Know Your Frozen Treats!</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="duration-tag">⏱ 5 min</span>
+          <span class="toggle-icon">▼</span>
+        </div>
+      </div>
+      <div class="step-detail">
+        <p>Before you make ice cream, know what makes it different from its frozen cousins! Use this interactive scale to walk guests through the spectrum — from the lightest icy sorbet to the richest, creamiest ice cream.</p>
+
+        <!-- ICE CREAM INTERACTIVE SCALE -->
+        <div class="icecream-scale-wrapper" onclick="event.stopPropagation()">
+          <p class="icecream-scale-title">The Frozen Treats Spectrum 🌈</p>
+
+          <!-- Gradient track -->
+          <div class="scale-track-wrap">
+            <div class="scale-track"></div>
+            <div class="scale-markers">
+              <div class="scale-marker">
+                <div class="m-emoji">🫐</div>
+                <div class="m-label">SORBET</div>
+              </div>
+              <div class="scale-marker">
+                <div class="m-emoji">🍵</div>
+                <div class="m-label">GELATO</div>
+              </div>
+              <div class="scale-marker">
+                <div class="m-emoji">🍯</div>
+                <div class="m-label">ICE CREAM</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tap cards -->
+          <p style="text-align:center;font-size:0.82rem;color:#bbb;margin:20px 0 6px;">👆 Tap a treat to learn more</p>
+          <div class="ic-cards">
+            <div class="ic-card sorbet" onclick="selectIceCream(this, 'sorbet')">
+              <div class="ic-emoji">🫐</div>
+              <div class="ic-name">Sorbet</div>
+              <div class="ic-detail">
+                <strong>Dairy-free & fruit-forward.</strong> Made from fruit purée, water, and sugar — no cream, no milk. Light, icy texture with an intense fruity punch. 
+                <br><br>🌿 Great for: vegan guests or those wanting a lighter, refreshing option.
+                <br>❄️ Fat content: <strong>0%</strong>
+              </div>
+            </div>
+            <div class="ic-card gelato" onclick="selectIceCream(this, 'gelato')">
+              <div class="ic-emoji">🍵</div>
+              <div class="ic-name">Gelato</div>
+              <div class="ic-detail">
+                <strong>Denser, creamier, more intense.</strong> Uses more milk than cream and less air is churned in. Served slightly warmer than ice cream for that silky, scoopable texture.
+                <br><br>🌿 Great for: guests who love bold, deep flavours.
+                <br>❄️ Fat content: <strong>4–9%</strong>
+              </div>
+            </div>
+            <div class="ic-card icecream" onclick="selectIceCream(this, 'icecream')">
+              <div class="ic-emoji">🍯</div>
+              <div class="ic-name">Ice Cream</div>
+              <div class="ic-detail">
+                <strong>Rich, creamy & airy.</strong> Higher fat from heavy cream, plus more air churned in (overrun). This gives it that light, fluffy, indulgent bite we all know and love.
+                <br><br>🌿 Great for: everyone — especially with local honey!
+                <br>❄️ Fat content: <strong>10–18%+</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Attribute comparison bars -->
+          <div class="attr-bars">
+            <p style="font-size:0.82rem;font-weight:800;color:#aaa;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;">How they compare</p>
+
+            <div class="attr-row">
+              <div class="attr-label">Creaminess</div>
+              <div class="attr-track">
+                <div class="attr-segment seg-sorbet" style="width:8%"><span class="seg-label">Sorbet</span></div>
+                <div class="attr-segment seg-gelato" style="width:30%"><span class="seg-label">Gelato</span></div>
+                <div class="attr-segment seg-icecream" style="width:55%"><span class="seg-label">Ice Cream</span></div>
+              </div>
+            </div>
+            <div class="attr-row">
+              <div class="attr-label">Lightness</div>
+              <div class="attr-track">
+                <div class="attr-segment seg-icecream" style="width:55%;background:#F6A623"></div>
+                <div class="attr-segment seg-gelato" style="width:30%;background:#6ec6a0"></div>
+                <div class="attr-segment seg-sorbet" style="width:8%;background:#a8d8f0"></div>
+              </div>
+            </div>
+            <div class="attr-row">
+              <div class="attr-label">Intensity</div>
+              <div class="attr-track">
+                <div class="attr-segment seg-sorbet" style="width:45%"></div>
+                <div class="attr-segment seg-gelato" style="width:38%"></div>
+                <div class="attr-segment seg-icecream" style="width:12%"></div>
+              </div>
+            </div>
+            <div class="attr-row">
+              <div class="attr-label">Fat %</div>
+              <div class="attr-track">
+                <div class="attr-segment seg-sorbet" style="width:3%"></div>
+                <div class="attr-segment seg-gelato" style="width:22%"></div>
+                <div class="attr-segment seg-icecream" style="width:60%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#e8faf7;border-radius:12px;padding:14px 18px;margin-top:20px;font-size:0.88rem;color:#1a5a50;">
+            <strong>🎯 Facilitator:</strong> Ask guests — <em>"Which one do you think we're making today?"</em> Let them guess! Then reveal that honey ice cream is the star — and explain why honey's natural sugars make it perfect for the mason jar method.
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- STEP 2b: History of Frozen Treats -->
+    <div class="flow-step" data-step="2b" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;">
+          <span class="step-emoji">🗺️</span>
+          <h3>Know Your Frozen Treats: A Delicious History</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="duration-tag">⏱ 5 min</span>
+          <span class="toggle-icon">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+        <p>Ice cream didn't just appear in a tub at the supermarket — it took <strong>centuries of travel, culture, and creativity</strong> to become what it is today. Walk guests through this delicious origin story using the map and timeline below.</p>
+
+        <!-- STATIC SILK ROAD MAP VISUAL -->
+        <div style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,0.1);margin:20px 0;">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/f470888be746882be09e6f41dda7d7f6cdcb04bc.jpg"
+               alt="The Silk Road trade route map"
+               style="width:100%;display:block;border-radius:16px 16px 0 0;" />
+          <div style="padding:12px 18px;background:#FFF8ED;font-size:0.82rem;color:#888;border-radius:0 0 16px 16px;">
+            🗺️ <em>The ancient Silk Road — the highway that carried spices, silk, and the first frozen treats westward from Persia to Europe.</em>
+          </div>
+        </div>
+
+        <!-- JOURNEY TIMELINE -->
+        <div style="margin-top:22px;">
+          <p style="font-family:'Playfair Display', serif;font-size:1.15rem;color:var(--amber);margin-bottom:16px;">🍧 The Journey of Ice Cream</p>
+          <div style="display:flex;flex-direction:column;gap:0;">
+
+            <div style="display:flex;gap:16px;align-items:flex-start;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:44px;height:44px;border-radius:50%;background:#a8d8f0;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">🕌</div>
+                <div style="width:3px;flex:1;background:#e0e0e0;margin:4px 0;min-height:40px;"></div>
+              </div>
+              <div style="background:#e8f6fd;border-radius:14px;padding:16px 18px;flex:1;margin-bottom:12px;">
+                <p style="font-weight:800;color:#5aadd6;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;">🇮🇷 Persia — The Origin</p>
+                <p style="font-size:0.88rem;color:#444;margin-top:6px;line-height:1.65;">Persians were the first to enjoy <strong>sharbat</strong> — a mixture of snow or ice with fruit syrups, rose water, and grape juice. This was a royal treat served to the ruling class as far back as 400 BCE. The word <strong>"sorbet"</strong> comes directly from the Persian <em>sharbat</em>.</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;align-items:flex-start;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:44px;height:44px;border-radius:50%;background:#d4edda;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">🛤️</div>
+                <div style="width:3px;flex:1;background:#e0e0e0;margin:4px 0;min-height:40px;"></div>
+              </div>
+              <div style="background:#f0fbf4;border-radius:14px;padding:16px 18px;flex:1;margin-bottom:12px;">
+                <p style="font-weight:800;color:#3aaa78;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;">🛣️ The Silk Road — The Highway</p>
+                <p style="font-size:0.88rem;color:#444;margin-top:6px;line-height:1.65;">Traders along the Silk Road carried not just spices and silk, but <strong>ideas</strong> — including the concept of iced drinks and frozen treats. As the recipe travelled westward, each culture added its own twist. Arab traders introduced <em>sharbat</em> to the Mediterranean world, where it became <strong>sorbetto</strong> in Italian.</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;align-items:flex-start;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:44px;height:44px;border-radius:50%;background:#fff0d4;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">🥐</div>
+                <div style="width:3px;flex:1;background:#e0e0e0;margin:4px 0;min-height:40px;"></div>
+              </div>
+              <div style="background:#fff8ed;border-radius:14px;padding:16px 18px;flex:1;margin-bottom:12px;">
+                <p style="font-weight:800;color:var(--amber);font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;">🇫🇷 France — Milk Enters the Picture</p>
+                <p style="font-size:0.88rem;color:#444;margin-top:6px;line-height:1.65;">When the frozen iced treat arrived in France in the 17th century, French cooks added a brilliant twist — <strong>milk</strong>. This created a creamier, more indulgent version. King Louis XIV was reportedly a fan, and frozen desserts became a centrepiece of aristocratic banquets. The French called it <em>fromage glacé</em> (frozen cream).</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;align-items:flex-start;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:44px;height:44px;border-radius:50%;background:#ffe0e0;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">🍕</div>
+              </div>
+              <div style="background:#fff5f5;border-radius:14px;padding:16px 18px;flex:1;margin-bottom:12px;">
+                <p style="font-weight:800;color:#e05a5a;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;">🇮🇹 Italy — Heavy Cream & Gelato</p>
+                <p style="font-size:0.88rem;color:#444;margin-top:6px;line-height:1.65;">Italian cooks — particularly in Florence — added <strong>heavy cream</strong> and egg yolks to the mix, producing a richer, denser frozen dessert: <strong>gelato</strong>. The Medici family is often credited with spreading gelato across Europe. Italian chefs brought the recipe to France, which then inspired what we know today as modern <strong>ice cream</strong>.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SUMMARY TABLE -->
+        <div style="overflow-x:auto;margin-top:20px;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.85rem;background:white;border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,0.07);">
+            <thead>
+              <tr style="background:var(--honey);color:white;">
+                <th style="padding:12px 16px;text-align:left;">🌍 Origin</th>
+                <th style="padding:12px 16px;text-align:left;">Era</th>
+                <th style="padding:12px 16px;text-align:left;">What They Added</th>
+                <th style="padding:12px 16px;text-align:left;">Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #f0f0f0;">
+                <td style="padding:12px 16px;">🇮🇷 Persia</td>
+                <td style="padding:12px 16px;color:#888;">~400 BCE</td>
+                <td style="padding:12px 16px;">Ice + fruit syrup + rosewater</td>
+                <td style="padding:12px 16px;font-weight:700;color:#5aadd6;">Sharbat / Sorbet</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
+                <td style="padding:12px 16px;">🇫🇷 France</td>
+                <td style="padding:12px 16px;color:#888;">17th Century</td>
+                <td style="padding:12px 16px;">+ Milk</td>
+                <td style="padding:12px 16px;font-weight:700;color:var(--amber);">Fromage Glacé</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 16px;">🇮🇹 Italy</td>
+                <td style="padding:12px 16px;color:#888;">17th–18th Century</td>
+                <td style="padding:12px 16px;">+ Heavy Cream + Egg Yolks</td>
+                <td style="padding:12px 16px;font-weight:700;color:#e05a5a;">Gelato → Ice Cream</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="background:#e8faf7;border-radius:12px;padding:14px 18px;margin-top:18px;font-size:0.88rem;color:#1a5a50;">
+          <strong>🎯 Facilitator:</strong> Point to the Silk Road map and trace the journey with your finger — Persia → Arabia → France → Italy. Ask guests: <em>"What ingredient do you think we added from this part of the world?"</em> Then point to the beehive! 🍯
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2c: A Little History — How Ice Cream is Made -->
+    <div class="flow-step" data-step="2c" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;">
+          <span class="step-emoji">📜</span>
+          <h3>A Little History: How Ice Cream is Made</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="duration-tag">⏱ 8 min</span>
+          <span class="toggle-icon">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+        <p>Before the freezer was invented, making ice cream was a <strong>labour of love</strong>. Walk guests through the original hand-made method — which is almost exactly what they'll be doing today — before introducing the modern compressor machine.</p>
+
+        <!-- THEN vs NOW toggle -->
+        <div style="display:flex;gap:10px;margin:20px 0 6px;justify-content:center;">
+          <button onclick="showTab('then')" id="btn-then" style="padding:10px 24px;border-radius:50px;border:2px solid var(--honey);background:var(--honey);color:white;font-family:'Inter',sans-serif;font-weight:800;cursor:pointer;font-size:0.9rem;">📜 Then (Manual)</button>
+          <button onclick="showTab('now')" id="btn-now" style="padding:10px 24px;border-radius:50px;border:2px solid var(--honey);background:white;color:var(--amber);font-family:'Inter',sans-serif;font-weight:800;cursor:pointer;font-size:0.9rem;">⚙️ Now (Compressor)</button>
+        </div>
+
+        <!-- THEN panel -->
+        <div id="panel-then" style="margin-top:10px;">
+          <div style="background:white;border-radius:16px;padding:22px;box-shadow:0 3px 14px rgba(0,0,0,0.07);">
+            <p style="font-weight:800;color:var(--amber);margin-bottom:16px;font-size:1rem;">The Original Method — No Machine Needed! 🧊</p>
+            <p style="font-size:0.88rem;color:#666;margin-bottom:16px;line-height:1.65;">This method dates back to at least the <strong>17th century</strong> and remained popular well into the 19th century until mechanical refrigeration became common. Sound familiar? It's exactly what you'll be doing today with the mason jars! 🫙</p>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--light-honey);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--amber);flex-shrink:0;">1</div>
+                <div><p style="font-weight:800;color:var(--dark);font-size:0.92rem;">Mix the Base</p><p style="font-size:0.85rem;color:#666;margin-top:3px;line-height:1.55;">A sweetened mixture of cream, milk, and flavourings (like vanilla or fruit) was hand-mixed in a metal canister.</p></div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--light-honey);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--amber);flex-shrink:0;">2</div>
+                <div><p style="font-weight:800;color:var(--dark);font-size:0.92rem;">Ice & Salt Bath</p><p style="font-size:0.85rem;color:#666;margin-top:3px;line-height:1.55;">The metal canister was surrounded by ice mixed with salt. The salt <strong>lowered the freezing point</strong> of the ice, creating a temperature cold enough to freeze cream — down to around -10°C!</p></div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--light-honey);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--amber);flex-shrink:0;">3</div>
+                <div><p style="font-weight:800;color:var(--dark);font-size:0.92rem;">Churn by Hand</p><p style="font-size:0.85rem;color:#666;margin-top:3px;line-height:1.55;">The canister was turned or shaken — often using a crank freezer — to freeze the mixture evenly and <strong>prevent large ice crystals</strong> from forming. This is why agitation = creaminess!</p></div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--light-honey);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--amber);flex-shrink:0;">4</div>
+                <div><p style="font-weight:800;color:var(--dark);font-size:0.92rem;">Pack & Harden</p><p style="font-size:0.85rem;color:#666;margin-top:3px;line-height:1.55;">Once thickened, the ice cream was packed and left to harden in more ice before serving. The whole process took 30–60 minutes of arm work!</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOW panel -->
+        <div id="panel-now" style="display:none;margin-top:10px;">
+          <div style="background:white;border-radius:16px;padding:22px;box-shadow:0 3px 14px rgba(0,0,0,0.07);">
+            <p style="font-weight:800;color:var(--mint);margin-bottom:4px;font-size:1rem;">⚙️ Modern Compressor Machine</p>
+            <p style="font-size:0.85rem;color:#888;margin-bottom:16px;">We use a <strong>Cuisinart Compressor Ice Cream Maker</strong> — a low-entry pro compressor that does in 20 minutes what took your great-great-grandparents an hour of cranking!</p>
+
+            <!-- Ice machine type comparison -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+              <div style="background:#fff8ed;border-radius:12px;padding:14px;border:2px solid #ffe0a0;">
+                <p style="font-weight:800;color:var(--amber);font-size:0.85rem;margin-bottom:8px;">❄️ Pre-Frozen Bowl</p>
+                <ul style="font-size:0.82rem;color:#666;line-height:1.8;padding-left:16px;">
+                  <li>Requires 12–24 hrs pre-freeze</li>
+                  <li>One batch only per freeze</li>
+                  <li>Cheaper to buy</li>
+                  <li>No motor — relies on stored cold</li>
+                </ul>
+              </div>
+              <div style="background:#e8faf7;border-radius:12px;padding:14px;border:2px solid #a0e0d4;">
+                <p style="font-weight:800;color:var(--mint);font-size:0.85rem;margin-bottom:8px;">⚙️ Compressor Machine ✅</p>
+                <ul style="font-size:0.82rem;color:#666;line-height:1.8;padding-left:16px;">
+                  <li>Ready anytime — no pre-freeze</li>
+                  <li>Multiple batches back-to-back</li>
+                  <li>Built-in cooling motor</li>
+                  <li>Consistent, professional results</li>
+                </ul>
+              </div>
+            </div>
+
+            <p style="font-weight:800;color:var(--dark);margin-bottom:14px;font-size:0.92rem;">🔄 How the Compressor Works — Step by Step</p>
+
+            <!-- Compressor cycle diagram -->
+            <div style="position:relative;display:flex;flex-direction:column;gap:0;">
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="display:flex;flex-direction:column;align-items:center;">
+                  <div style="width:40px;height:40px;border-radius:50%;background:#FF7F6E;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🔥</div>
+                  <div style="width:3px;height:32px;background:#eee;"></div>
+                </div>
+                <div style="padding:12px 0 16px;">
+                  <p style="font-weight:800;color:#e05a5a;font-size:0.88rem;">① Compression</p>
+                  <p style="font-size:0.83rem;color:#666;margin-top:4px;line-height:1.55;">The compressor squeezes the refrigerant gas (R134a), raising its pressure and temperature. This is the "engine" of the whole cycle.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="display:flex;flex-direction:column;align-items:center;">
+                  <div style="width:40px;height:40px;border-radius:50%;background:#ffd580;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">💨</div>
+                  <div style="width:3px;height:32px;background:#eee;"></div>
+                </div>
+                <div style="padding:12px 0 16px;">
+                  <p style="font-weight:800;color:var(--amber);font-size:0.88rem;">② Condenser — Heat Out</p>
+                  <p style="font-size:0.83rem;color:#666;margin-top:4px;line-height:1.55;">The hot gas flows through condenser coils with a fan. Heat is released into the air, and the gas cools into a <strong>liquid</strong>. This is why the back of the machine feels warm!</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="display:flex;flex-direction:column;align-items:center;">
+                  <div style="width:40px;height:40px;border-radius:50%;background:#d4edda;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🔩</div>
+                  <div style="width:3px;height:32px;background:#eee;"></div>
+                </div>
+                <div style="padding:12px 0 16px;">
+                  <p style="font-weight:800;color:#3aaa78;font-size:0.88rem;">③ Expansion Valve — Pressure Drop</p>
+                  <p style="font-size:0.83rem;color:#666;margin-top:4px;line-height:1.55;">The liquid refrigerant passes through a tiny expansion valve, rapidly expanding into a <strong>cold, low-pressure gas</strong>. The rapid expansion causes a dramatic temperature drop.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="display:flex;flex-direction:column;align-items:center;">
+                  <div style="width:40px;height:40px;border-radius:50%;background:#a8d8f0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">❄️</div>
+                  <div style="width:3px;height:32px;background:#eee;"></div>
+                </div>
+                <div style="padding:12px 0 16px;">
+                  <p style="font-weight:800;color:#5aadd6;font-size:0.88rem;">④ Evaporator — Freeze the Ice Cream!</p>
+                  <p style="font-size:0.83rem;color:#666;margin-top:4px;line-height:1.55;">The cold gas flows through coils surrounding the mixing bowl (the evaporator), <strong>drawing heat out</strong> of the ice cream mixture — freezing it from the outside in while the paddle churns.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div>
+                  <div style="width:40px;height:40px;border-radius:50%;background:#e8d5f5;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🔁</div>
+                </div>
+                <div style="padding:12px 0 0;">
+                  <p style="font-weight:800;color:#8a4fc7;font-size:0.88rem;">⑤ Repeat the Cycle</p>
+                  <p style="font-size:0.83rem;color:#666;margin-top:4px;line-height:1.55;">The refrigerant — now warmed by absorbing heat from the ice cream — returns to the compressor, and the cycle repeats continuously until your ice cream is frozen to perfection! 🍦</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#e8faf7;border-radius:12px;padding:14px 18px;margin-top:18px;font-size:0.88rem;color:#1a5a50;">
+          <strong>🎯 Facilitator:</strong> Bridge old and new — <em>"People have been making ice cream this way for 400 years. Today we'll use the original method with our hands AND show you how a modern compressor does the same job!"</em>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- STEP 2d: Start Making Ice Cream -->
+    <div class="flow-step" data-step="2d" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;">
+          <span class="step-emoji">🍳</span>
+          <h3>Making the Honey Ice Cream Mixture</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="duration-tag">⏱ 30 min</span>
+          <span class="toggle-icon">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+        <p>This is the heart of the experience — guests make a proper <strong>custard-based ice cream</strong> from scratch. The technique uses gentle heat and tempering to build a silky, professional base. Keep the energy calm and focused here; this step requires attention!</p>
+
+        <!-- RECIPE CARD STYLE -->
+        <div style="background:white;border-radius:18px;padding:24px;box-shadow:0 4px 18px rgba(0,0,0,0.08);margin-top:18px;">
+
+          <!-- Quick ingredient reference -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin-bottom:22px;padding-bottom:18px;border-bottom:2px dashed #f0f0f0;">
+            <div style="text-align:center;"><div style="font-size:1.6rem;">🍯</div><div style="font-size:0.78rem;font-weight:800;color:var(--amber);">Honey</div><div style="font-size:0.82rem;color:#666;">170g</div></div>
+            <div style="text-align:center;"><div style="font-size:1.6rem;">🥚</div><div style="font-size:0.78rem;font-weight:800;color:var(--amber);">Egg Yolks</div><div style="font-size:0.82rem;color:#666;">9 yolks</div></div>
+            <div style="text-align:center;"><div style="font-size:1.6rem;">🍬</div><div style="font-size:0.78rem;font-weight:800;color:var(--amber);">Granulated Sugar</div><div style="font-size:0.82rem;color:#666;">50g</div></div>
+            <div style="text-align:center;"><div style="font-size:1.6rem;">🥛</div><div style="font-size:0.78rem;font-weight:800;color:var(--amber);">Heavy Cream</div><div style="font-size:0.82rem;color:#666;">528g</div></div>
+            <div style="text-align:center;"><div style="font-size:1.6rem;">🧴</div><div style="font-size:0.78rem;font-weight:800;color:var(--amber);">Whole Milk</div><div style="font-size:0.82rem;color:#666;">250g</div></div>
+            <div style="text-align:center;"><div style="font-size:1.6rem;">🫙</div><div style="font-size:0.78rem;font-weight:800;color:var(--amber);">Crème Fraîche</div><div style="font-size:0.82rem;color:#666;">110g</div></div>
+            <div style="text-align:center;"><div style="font-size:1.6rem;">🧂</div><div style="font-size:0.78rem;font-weight:800;color:var(--amber);">Salt</div><div style="font-size:0.82rem;color:#666;">2 pinches</div></div>
+          </div>
+
+          <!-- Step by step -->
+          <p style="font-weight:800;color:var(--dark);font-size:0.95rem;margin-bottom:16px;">Step-by-Step Method</p>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="min-width:32px;height:32px;border-radius:50%;background:var(--honey);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">1</div>
+              <div style="background:#fffbf0;border-radius:12px;padding:12px 16px;flex:1;">
+                <p style="font-weight:800;color:var(--amber);font-size:0.88rem;">Warm the Cream, Milk & Honey</p>
+                <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Combine the heavy cream, whole milk and honey (170g) in a saucepan. Heat gently over medium heat — <strong>do not boil</strong>. Stir to dissolve the honey fully. The warmth unlocks honey's floral aromatics. Let guests take a big sniff at this point! 🍯</p>
+                <div class="pink-note">The honey should turn a <strong>deep brown colour — but not burnt!</strong> Watch the heat closely. Deep amber = perfect flavour depth. Black or acrid smell = start over. Trust your nose as much as your eyes.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="min-width:32px;height:32px;border-radius:50%;background:var(--honey);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">2</div>
+              <div style="background:#fffbf0;border-radius:12px;padding:12px 16px;flex:1;">
+                <p style="font-weight:800;color:var(--amber);font-size:0.88rem;">Whisk Egg Yolks + Sugar</p>
+                <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">In a separate bowl, whisk the 9 egg yolks with the granulated sugar (50g) until pale and slightly thickened. This is called <strong>"ribboning"</strong> — the mixture should fall off the whisk in a slow ribbon. This step begins building the custard structure.</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="min-width:32px;height:32px;border-radius:50%;background:var(--honey);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">3</div>
+              <div style="background:#fff0f5;border-radius:12px;padding:12px 16px;flex:1;border-left:3px solid #FF7F6E;">
+                <p style="font-weight:800;color:#e05a3a;font-size:0.88rem;">⚡ Temper the Cream into the Honey</p>
+                <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;"><strong>Slowly</strong> ladle a little warm cream mixture into the honey pan, whisking constantly. Then gradually pour in the rest. Tempering prevents scrambling — you're gently raising the temperature of the cream base before adding the eggs. <em>Slow and steady!</em></p>
+                <div class="pink-note"><strong>Temper the warm cream into the honey first</strong> — not the other way round. Add just a small ladle at a time, whisking as you go, to gently bring the honey up to temperature before combining fully.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="min-width:32px;height:32px;border-radius:50%;background:var(--honey);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">4</div>
+              <div style="background:#fff0f5;border-radius:12px;padding:12px 16px;flex:1;border-left:3px solid #FF7F6E;">
+                <p style="font-weight:800;color:#e05a3a;font-size:0.88rem;">⚡ Temper Cream + Honey into Eggs</p>
+                <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Now pour the warm cream-honey mixture <strong>slowly</strong> into the egg yolk bowl, whisking the whole time. Then return everything to the saucepan over low-medium heat. Keep stirring continuously — bring to a gentle simmer.</p>
+                <div class="pink-note"><strong>Add only a little cream-honey mixture at a time into the eggs</strong> — a small ladleful first, whisk well, then another, and so on. Pouring too much too fast will cook the eggs and make <strong>scrambled eggs instead of custard</strong>. Patience here makes all the difference!</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="min-width:32px;height:32px;border-radius:50%;background:var(--honey);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">5</div>
+              <div style="background:#fffbf0;border-radius:12px;padding:12px 16px;flex:1;">
+                <p style="font-weight:800;color:var(--amber);font-size:0.88rem;">Cook Until Thick — The Spoon Test</p>
+                <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Stir constantly over gentle heat until the custard thickens enough to <strong>coat the back of a spoon and fall off slowly</strong>. This is called <em>nappe</em> consistency. Run a finger across the spoon — it should leave a clean line that holds.</p>
+                <div style="background:#fff8e6;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:0.82rem;color:#7a5a00;">⚠️ <strong>Watch the heat!</strong> If it gets too hot, the eggs will scramble. If you see lumps forming, remove from heat immediately and strain through a sieve.</div>
+                <div class="pink-note">Use a <strong>small flame / low heat</strong> throughout this step. Switch from a whisk to a <strong>spatula</strong> — it covers more of the pan bottom and prevents the custard from cooking and sticking underneath. Keep the spatula moving in a figure-eight pattern the entire time.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="min-width:32px;height:32px;border-radius:50%;background:var(--honey);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">6</div>
+              <div style="background:#fffbf0;border-radius:12px;padding:12px 16px;flex:1;">
+                <p style="font-weight:800;color:var(--amber);font-size:0.88rem;">Whisk in Crème Fraîche</p>
+                <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Remove from heat. Add 2 pinches of salt, then whisk in the crème fraîche (110g). This adds a beautiful slight tang that rounds out the sweetness of the honey. The mixture should be glossy and smooth.</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="min-width:32px;height:32px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">7</div>
+              <div style="background:#e8faf7;border-radius:12px;padding:12px 16px;flex:1;">
+                <p style="font-weight:800;color:var(--mint);font-size:0.88rem;">Ice Bath — Cool It Down</p>
+                <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Pour the custard into a bowl set over an ice bath (a larger bowl filled with ice and cold water). Stir occasionally until completely cooled. <strong>A cold base = better churn = creamier ice cream.</strong> Don't rush this step!</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="step-tip" style="margin-top:18px;">While the mixture cools in the ice bath, keep guests engaged by asking: "Why do we need to cool the mixture before churning it?" — this bridges directly into the next step about the ice cream machine.</div>
+      </div>
+    </div>
+
+    <!-- STEP 2e: Make Honeycomb -->
+    <div class="flow-step" data-step="2e" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;">
+          <span class="step-emoji">🍬</span>
+          <h3>Making the Honeycomb</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="duration-tag">⏱ 20 min</span>
+          <span class="toggle-icon">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+        <p>While the ice cream base cools, it's time for the drama of the session — <strong>making honeycomb from scratch!</strong> This step involves high heat and a spectacular chemical reaction that guests will absolutely love to watch. Keep safety front of mind.</p>
+
+        <div style="background:white;border-radius:18px;padding:24px;box-shadow:0 4px 18px rgba(0,0,0,0.08);margin-top:18px;">
+
+          <!-- Ingredient quick ref -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px;padding-bottom:18px;border-bottom:2px dashed #f0f0f0;text-align:center;">
+            <div><div style="font-size:1.6rem;">🍬</div><div style="font-size:0.78rem;font-weight:800;color:#e05a3a;">Caster Sugar</div><div style="font-size:0.82rem;color:#666;">200g</div></div>
+            <div><div style="font-size:1.6rem;">🍯</div><div style="font-size:0.78rem;font-weight:800;color:#e05a3a;">Honey</div><div style="font-size:0.82rem;color:#666;">75g</div></div>
+            <div><div style="font-size:1.6rem;">🫧</div><div style="font-size:0.78rem;font-weight:800;color:#e05a3a;">Baking Soda</div><div style="font-size:0.82rem;color:#666;">2 tsp</div></div>
+            <div><div style="font-size:1.6rem;">🧪</div><div style="font-size:0.78rem;font-weight:800;color:#e05a3a;">Cream of Tartar</div><div style="font-size:0.82rem;color:#666;">¼ tsp</div></div>
+          </div>
+
+          <p style="font-weight:800;color:var(--dark);font-size:0.95rem;margin-bottom:16px;">Step-by-Step Method</p>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="min-width:32px;height:32px;border-radius:50%;background:#FF7F6E;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">1</div>
+              <div style="background:#fff5f2;border-radius:12px;padding:12px 16px;flex:1;">
+                <p style="font-weight:800;color:#e05a3a;font-size:0.88rem;">Boil the Honey + Sugar</p>
+                <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Combine caster sugar (200g) and honey (75g) in a heavy-based saucepan. Heat over medium-high heat <strong>without stirring</strong> until the mixture reaches a deep amber caramel colour. Swirling the pan gently is fine — but no stirring with a spoon!</p>
+                <div style="background:#fff0ec;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:0.82rem;color:#7a2a00;">🌡️ <strong>Target temperature:</strong> ~150°C (hard crack stage). The caramel should look like dark golden syrup and smell deeply toasty.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="min-width:32px;height:32px;border-radius:50%;background:#FF7F6E;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">2</div>
+              <div style="background:#fff5f2;border-radius:12px;padding:12px 16px;flex:1;">
+                <p style="font-weight:800;color:#e05a3a;font-size:0.88rem;">Drop in the Bicarb + Cream of Tartar</p>
+                <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;"><strong>Remove from heat immediately.</strong> Add the cream of tartar (¼ tsp) then the baking soda (2 tsp) all at once. The mixture will <strong>explode into foam</strong> — this is the CO₂ reaction! It happens fast!</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="min-width:32px;height:32px;border-radius:50%;background:#FF7F6E;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">3</div>
+              <div style="background:#fff5f2;border-radius:12px;padding:12px 16px;flex:1;">
+                <p style="font-weight:800;color:#e05a3a;font-size:0.88rem;">Stir Until Foamy</p>
+                <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Quickly stir a few times to incorporate — just enough to distribute the foam evenly. Don't overmix or you'll deflate the bubbles! The mixture should look thick, airy, and gloriously golden.</p>
+                <div class="pink-note"><strong>Do NOT overmix once the bicarb goes in.</strong> A few quick folds is all it takes. Over-stirring pops the CO₂ bubbles that create the honeycomb's airy texture — you'll end up with a flat, dense slab instead of light, crunchy honeycomb.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="min-width:32px;height:32px;border-radius:50%;background:#FF7F6E;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">4</div>
+              <div style="background:#e8faf7;border-radius:12px;padding:12px 16px;flex:1;">
+                <p style="font-weight:800;color:var(--mint);font-size:0.88rem;">Pour & Let It Set</p>
+                <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Quickly pour onto a lined baking tray — <strong>do not spread or press!</strong> Let the honeycomb settle naturally so the air bubbles stay intact. Leave to cool and set at room temperature for 15–20 minutes. It will harden into a crisp, glassy slab.</p>
+                <div class="pink-note"><strong>Cut and prepare your baking paper BEFORE you start boiling the caramel.</strong> Once the caramel is ready, you'll have no time to fumble with paper. Tray should be lined, flat, and waiting on the bench before you turn on the heat.</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="background:#fff8e1;border-radius:12px;padding:14px 16px;margin-top:16px;border-left:4px solid var(--honey);">
+            <p style="font-weight:800;font-size:0.85rem;color:var(--amber);">🔬 The Science Behind the Crunch</p>
+            <p style="font-size:0.83rem;color:#666;margin-top:5px;line-height:1.6;">When baking soda (sodium bicarbonate, NaHCO₃) meets the hot acidic caramel, it decomposes and releases <strong>carbon dioxide (CO₂) gas</strong>. The thick caramel traps these bubbles before they can escape — creating the honeycomb's signature airy, porous structure. Cream of tartar (an acid) boosts this reaction and stops the sugar re-crystallising.</p>
+          </div>
+        </div>
+
+        <div class="step-tip" style="margin-top:18px;">Have guests stand back slightly when the bicarb goes in — the dramatic foam rise is a visual wow! Use this as a teaching moment: "This is the same reaction as a baking soda volcano — just tastier." 🌋</div>
+      </div>
+    </div>
+
+    <!-- STEP 2f: Churn the Ice Cream -->
+    <div class="flow-step" data-step="2f" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;">
+          <span class="step-emoji">⚙️</span>
+          <h3>Churn the Ice Cream</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="duration-tag">⏱ 10 min</span>
+          <span class="toggle-icon">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+        <p>The custard base is ready and cooled — now it's time to hand it over to the <strong>Cuisinart Compressor</strong>. This step is satisfying to watch and gives you a great opportunity to explain the machine's mechanics while it does its work.</p>
+
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:18px;">
+
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="min-width:32px;height:32px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">①</div>
+            <div style="background:#e8faf7;border-radius:12px;padding:12px 16px;flex:1;">
+              <p style="font-weight:800;color:var(--mint);font-size:0.88rem;">Drop It Into the Machine</p>
+              <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Pour the cooled custard base into the Cuisinart compressor bowl. Switch it on — the paddle begins turning as the compressor freezes the bowl from outside in. Point out the machine's different parts and link back to the compressor cycle from the history section!</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="min-width:32px;height:32px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">②</div>
+            <div style="background:#e8faf7;border-radius:12px;padding:12px 16px;flex:1;">
+              <p style="font-weight:800;color:var(--mint);font-size:0.88rem;">Transfer to a Tub</p>
+              <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Once churned to a soft-serve consistency (~20–25 minutes), transfer the ice cream into a freezer-safe tub using a spatula. Smooth the top. Label it with the date.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="min-width:32px;height:32px;border-radius:50%;background:var(--honey);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">③</div>
+            <div style="background:var(--light-honey);border-radius:12px;padding:12px 16px;flex:1;border-left:3px solid var(--honey);">
+              <p style="font-weight:800;color:var(--amber);font-size:0.88rem;">⏳ The "Overnight" Reveal</p>
+              <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Explain to guests that ice cream needs to <strong>set in the freezer overnight</strong> to reach its final scoopable texture — what professionals call "hardening off". The batch they just made will be for the next day. <em>But don't worry...</em></p>
+              <div style="background:white;border-radius:10px;padding:12px;margin-top:10px;border:2px dashed var(--honey);">
+                <p style="font-weight:800;color:var(--amber);font-size:0.88rem;">🎉 We've Already Made One For You!</p>
+                <p style="font-size:0.83rem;color:#555;margin-top:4px;line-height:1.6;">Reveal the pre-made batch that was prepared ahead of time — already set, perfectly scoopable, and ready to taste <em>right now</em>. This is the delicious payoff after all that hard work!</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="min-width:32px;height:32px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">④</div>
+            <div style="background:#e8faf7;border-radius:12px;padding:12px 16px;flex:1;">
+              <p style="font-weight:800;color:var(--mint);font-size:0.88rem;">Half-Hour Check-In</p>
+              <p style="font-size:0.85rem;color:#555;margin-top:5px;line-height:1.6;">Let guests know they can peek at their freshly churned batch after about 30 minutes to see how the texture has changed. A lovely little before-and-after moment that closes the loop on the science!</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="step-tip" style="margin-top:18px;">The "we made one ahead of time" reveal is a genuine crowd-pleaser — play it up! Keep the pre-made tub hidden until this exact moment for maximum effect. 🎭</div>
+      </div>
+    </div>
+
+
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- SECTION DIVIDER: ICE CREAM → BEE ENCOUNTER               -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="flow-divider">
+      <div class="flow-divider-icon">🐝</div>
+      <div>
+        <h4>Bee Encounter Begins!</h4>
+        <p>Head to the Apiary — the hive is waiting. Prep the board, smoker & suits.</p>
+      </div>
+    </div>
+
+    <!-- STEP B1: Sundowner Story + Theory Intro -->
+    <div class="flow-step" data-step="B1" onclick="toggleStep(this)" style="border-top: 4px solid #3DBDA7;">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
+          <span class="step-emoji">🏡</span>
+          <h3>The Sundowner Story & Singapore's Bees</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span class="duration-tag" style="background:#e8faf7;color:var(--mint);">⏱ 10 min</span>
+          <span class="toggle-icon" style="color:var(--mint);">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+
+        <p>Before suiting up, gather guests around the <strong>Bee Board</strong> for the theory portion. Start with The Sundowner's story — it's personal, surprising, and immediately builds emotional connection to the bees they're about to meet.</p>
+
+        <div style="background:linear-gradient(135deg,#e8faf7,#d0f0ea);border-radius:14px;padding:18px 20px;margin:16px 0;border-left:4px solid var(--mint);">
+          <p style="font-weight:800;color:var(--mint);margin-bottom:8px;font-size:0.95rem;">🏡 The Sundowner Story</p>
+          <p style="font-size:0.88rem;color:#1a5a50;line-height:1.7;">The Sundowner didn't set out to become a beekeeping sanctuary. One day, we discovered a <strong>massive colony of bees</strong> had moved into our space — not a few bees, but an entire thriving community. Instead of calling pest control, we made a choice: to <strong>rescue them</strong>. We called in experts, relocated the colony safely, and began learning everything we could about bees. Today, our rooftop Apiary is a testament to what happens when you choose curiosity over fear. 🐝</p>
+        </div>
+
+        <div class="funfact">Singapore is home to <strong>130 species of bees</strong> — but only 4 of those are honeybees. The other 126 are <em>solitary bees</em>, which don't live in hives, don't produce honey, and are rarely seen. Solitary bees are incredibly important pollinators — each one is its own tiny, industrious world!</div>
+
+        <div class="quiz-box" onclick="this.classList.toggle('revealed')">
+          How many bee species are in Singapore — and how many of them are honeybees?
+          <div class="quiz-answer">✅ <strong>130 species total</strong>, but only <strong>4 are honeybees</strong>! The rest are solitary bees — no hive, no honey, but just as important for pollination.</div>
+        </div>
+
+        <p style="font-weight:800;color:var(--amber);margin:20px 0 12px;font-size:1rem;">🐝 Singapore's 3 Honeybee Species</p>
+        <div class="bee-species-grid">
+          <div class="bee-species-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/CSIRO_ScienceImage_3651_Worker_Asian_honeybees_Apis_cerana.jpg" alt="Apis cerana - Asian Honeybee" loading="lazy"/>
+            <div class="bee-species-info">
+              <div class="sci-name">Apis cerana</div>
+              <div class="common-name">Asian / Eastern Honeybee</div>
+              <span class="tag tag-resident">⭐ Our Resident Bees!</span>
+              <p>Medium-sized and incredibly adaptable. <em>Apis cerana</em> is the bee you'll meet at our Apiary today. They build enclosed hives — like a cozy dark hollow — and are calmer and more manageable than their giant cousins.</p>
+            </div>
+          </div>
+          <div class="bee-species-card">
+            <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/aab7de926f2ec1ffa623d1d29ef8b690e1c0bbdd.jpg" alt="Apis florea - Dwarf Honeybee" loading="lazy"/>
+            <div class="bee-species-info">
+              <div class="sci-name">Apis florea</div>
+              <div class="common-name">Dwarf Honeybee</div>
+              <span class="tag tag-wild">🌿 Wild</span>
+              <p>The smallest honeybee in Singapore — about half the size of a Western honeybee. They build single-comb nests on exposed branches. Can be red or black. Gentle by nature and rarely sting unprovoked.</p>
+            </div>
+          </div>
+          <div class="bee-species-card">
+            <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/7ca000a71a0d05898cb1057910092c0fab564299.jpg" alt="Apis dorsata - Giant Honeybee" loading="lazy"/>
+            <div class="bee-species-info">
+              <div class="sci-name">Apis dorsata</div>
+              <div class="common-name">Giant Honeybee</div>
+              <span class="tag tag-wild">🌿 Wild</span>
+              <p>The largest honeybee in the world — up to 3× bigger than a regular bee! Builds massive exposed combs on high branches and building overhangs. Known for their defensive nature — <em>give them space!</em></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="funfact">Solitary bees like the Carpenter Bee and Sweat Bee don't live in hives — every female is her own queen, nest-builder, and honey-maker all at once. No teamwork required!</div>
+
+        <div style="background:#e8faf7;border-radius:12px;padding:14px 18px;margin-top:16px;font-size:0.88rem;color:#1a5a50;">
+          <strong>🎯 Facilitator:</strong> Point to the Bee Board photos and ask guests to compare sizes between the three species. Let them touch (or smell) a piece of honeycomb while you talk — multi-sensory engagement keeps energy high during theory!
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP B2: Life Inside the Hive -->
+    <div class="flow-step" data-step="B2" onclick="toggleStep(this)" style="border-top: 4px solid #3DBDA7;">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
+          <span class="step-emoji">👑</span>
+          <h3>Life Inside the Hive — Who's Who?</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span class="duration-tag" style="background:#e8faf7;color:var(--mint);">⏱ 8 min</span>
+          <span class="toggle-icon" style="color:var(--mint);">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+        <p>A honeybee hive is one of the most sophisticated societies on earth — and it all runs on three castes. Use the <strong>gender reveal</strong> as a hook; guests are almost always surprised!</p>
+
+        <div class="quiz-box" onclick="this.classList.toggle('revealed')" style="margin-bottom:6px;">
+          The hive has 3 types of bees: Queen, Drone, and Worker. Can you guess which ones are female?
+          <div class="quiz-answer">✅ The <strong>Queen</strong> and all <strong>Workers</strong> are female! Drones are the only males — and their sole purpose is to mate with a queen. After mating, they die. In winter, the workers actually kick them out of the hive. Nature is brutal! 😅</div>
+        </div>
+        <p style="font-size:0.78rem;color:#bbb;text-align:center;margin-bottom:16px;">👆 Tap to reveal the answer</p>
+
+        <div class="bee-role-grid">
+          <div class="bee-role-card" style="border-top-color:#e05a3a;">
+            <div class="role-emoji">👑</div>
+            <h4>The Queen</h4>
+            <p>The mother of the entire colony. There is only ever <strong>one queen</strong> per hive. She can live for <strong>3–5 years</strong> and lays an astonishing <strong>1,000 to 3,000 eggs per day</strong> at peak season.</p>
+            <span class="gender-tag" style="background:#fff0ec;color:#e05a3a;">♀ Female</span>
+          </div>
+          <div class="bee-role-card" style="border-top-color:#888;">
+            <div class="role-emoji">🐝</div>
+            <h4>The Drone</h4>
+            <p>The males of the hive. Drones do <strong>no work</strong> — no foraging, no cleaning, no defending. Their only purpose is to <strong>mate with a new queen</strong>. They don't even have a stinger!</p>
+            <span class="gender-tag" style="background:#f0f0f0;color:#555;">♂ Male</span>
+          </div>
+          <div class="bee-role-card" style="border-top-color:var(--mint);">
+            <div class="role-emoji">⚙️</div>
+            <h4>The Worker</h4>
+            <p>All female. They do <strong>everything</strong> — build comb, clean, nurse babies, guard the entrance, and forage for food. A colony can have <strong>20,000–80,000 workers</strong>. They live just 6 weeks in summer!</p>
+            <span class="gender-tag" style="background:#e8faf7;color:var(--mint);">♀ Female</span>
+          </div>
+        </div>
+
+        <div class="funfact">A queen bee can lay her own body weight in eggs every single day. Over her lifetime, she may lay over <strong>1 million eggs</strong> — making her one of the most productive creatures on earth!</div>
+
+        <div style="background:#e8faf7;border-radius:12px;padding:14px 18px;margin-top:16px;font-size:0.88rem;color:#1a5a50;">
+          <strong>🎯 Facilitator:</strong> Use the "gender reveal" quiz as a crowd moment — ask guests to vote by show of hands before revealing the answer. It gets people laughing and invested!
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP B3: Bee Lifecycle -->
+    <div class="flow-step" data-step="B3" onclick="toggleStep(this)" style="border-top: 4px solid #3DBDA7;">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
+          <span class="step-emoji">🥚</span>
+          <h3>The Lifecycle of a Bee</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span class="duration-tag" style="background:#e8faf7;color:var(--mint);">⏱ 5 min</span>
+          <span class="toggle-icon" style="color:var(--mint);">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+        <p>From a single egg to a fully-fledged bee in just 21 days — the lifecycle of a honeybee is a masterclass in biological efficiency.</p>
+
+        <div class="lifecycle-steps">
+          <div class="lifecycle-step">
+            <div class="lifecycle-icon" style="background:#fff8e1;">🥚</div>
+            <h5>Egg</h5>
+            <p>Queen lays a tiny rice-grain egg in a cell. Hatches in <strong>3 days</strong>.</p>
+          </div>
+          <div class="lifecycle-arrow">→</div>
+          <div class="lifecycle-step">
+            <div class="lifecycle-icon" style="background:#e8f6fd;">🐛</div>
+            <h5>Larvae</h5>
+            <p>Fed <strong>bee bread</strong> (pollen + honey mix) by nurse bees. Grows rapidly for <strong>6 days</strong>.</p>
+          </div>
+          <div class="lifecycle-arrow">→</div>
+          <div class="lifecycle-step">
+            <div class="lifecycle-icon" style="background:#f0f0f0;">🫘</div>
+            <h5>Pupae</h5>
+            <p>Cell is <strong>capped with wax</strong>. Inside, the larva transforms — wings, legs, eyes form over <strong>12 days</strong>.</p>
+          </div>
+          <div class="lifecycle-arrow">→</div>
+          <div class="lifecycle-step">
+            <div class="lifecycle-icon" style="background:#e8faf7;">🐝</div>
+            <h5>Adult Bee</h5>
+            <p>Bites through the wax cap, emerges, and immediately <strong>cleans its own cell</strong> — ready for the next egg!</p>
+          </div>
+        </div>
+
+        <div class="funfact">The very first thing a newborn bee does after emerging is clean the cell it was born in — making its bed, ready for the next generation. A tiny act of housekeeping that keeps the whole colony running!</div>
+
+        <div class="quiz-box" onclick="this.classList.toggle('revealed')">
+          Worker bees are fed something special to become queens instead of workers — what is it?
+          <div class="quiz-answer">✅ <strong>Royal Jelly!</strong> Nursing bees feed eligible larvae (less than 2 days old) an exclusive diet of royal jelly — a protein-rich secretion. This triggers completely different development: larger body, functional ovaries, and a lifespan of years instead of weeks. Same egg, totally different destiny!</div>
+        </div>
+
+        <div style="background:#e8faf7;border-radius:12px;padding:14px 18px;margin-top:16px;font-size:0.88rem;color:#1a5a50;">
+          <strong>🎯 Facilitator:</strong> Point to the Bee Board lifecycle diagram while telling this story. If you have a capped brood frame available, pass it around — seeing the capped cells in real life makes the pupae stage click immediately.
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP B4: Worker Bee Duties -->
+    <div class="flow-step" data-step="B4" onclick="toggleStep(this)" style="border-top: 4px solid #3DBDA7;">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
+          <span class="step-emoji">⚙️</span>
+          <h3>Worker Bee Duties — A Career in 6 Weeks</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span class="duration-tag" style="background:#e8faf7;color:var(--mint);">⏱ 5 min</span>
+          <span class="toggle-icon" style="color:var(--mint);">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+        <p>Worker bees don't have one job — they have a <strong>career progression</strong>. In their 6-week lifespan, they graduate through three distinct roles based on age, starting inside the hive and eventually venturing into the world.</p>
+
+        <div class="duty-grid">
+          <div class="duty-card" style="background:#fff8e1;">
+            <div class="duty-num">① 🍼</div>
+            <h4 style="color:var(--amber);">Nursing Bee</h4>
+            <p style="color:#5a3e00;">The hive intern. Starts career <strong>inside the hive</strong>, tending to the queen and feeding larvae. Produces royal jelly and bee bread. Think of it as starting your career in training before seeing the outside world.</p>
+          </div>
+          <div class="duty-card" style="background:#fff0ec;">
+            <div class="duty-num">② 🛡️</div>
+            <h4 style="color:#e05a3a;">Guard Bee</h4>
+            <p style="color:#7a2a00;">The hive's security team. Stationed at the entrance to <strong>defend against threats</strong> — bears, wasps, ants, curious humans. Guard bees use their stingers as a last resort, releasing an alarm pheromone to call for backup when threatened.</p>
+          </div>
+          <div class="duty-card" style="background:#e8faf7;">
+            <div class="duty-num">③ 🌸</div>
+            <h4 style="color:var(--mint);">Foraging Bee</h4>
+            <p style="color:#1a5a50;">The adventurer. Flies up to 5km from the hive collecting <strong>pollen (protein)</strong> and <strong>nectar (carbohydrates)</strong> — storing them in special pouches on their hind legs. Returns to perform the "waggle dance" to share directions with hive-mates!</p>
+          </div>
+        </div>
+
+        <div class="funfact">Foraging bees carry pollen in special structures called <strong>corbiculae</strong> (pollen baskets) on their hind legs. You can actually see little orange or yellow pollen packs on bees as they fly — look for it next time you're in the garden!</div>
+
+        <div class="quiz-box" onclick="this.classList.toggle('revealed')">
+          A foraging bee collects two types of food for the hive. What are they, and what do they provide nutritionally?
+          <div class="quiz-answer">✅ <strong>Pollen</strong> = protein (used to make bee bread, which feeds larvae) and <strong>Nectar</strong> = carbohydrates (converted into honey, which is the hive's energy reserve). Bees are incredibly efficient nutritionists!</div>
+        </div>
+
+        <div style="background:#e8faf7;border-radius:12px;padding:14px 18px;margin-top:16px;font-size:0.88rem;color:#1a5a50;">
+          <strong>🎯 Facilitator:</strong> Ask guests: <em>"Which bee role sounds most like your job?"</em> — it's a great icebreaker that gets laughter and keeps energy up before suiting up.
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP B5: Suit Up! -->
+    <div class="flow-step" data-step="B5" onclick="toggleStep(this)" style="border-top: 4px solid #3DBDA7;">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
+          <span class="step-emoji">🤿</span>
+          <h3>Suit Up & Photo Time!</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span class="duration-tag" style="background:#e8faf7;color:var(--mint);">⏱ 10 min</span>
+          <span class="toggle-icon" style="color:var(--mint);">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+        <p>This is a highlight moment — guests suiting up always generates excitement, laughter, and great photos. Set it up as a fun ritual, not just a safety step!</p>
+
+        <div class="prep-board">
+          <div class="prep-item">
+            <div class="p-emoji">🥼</div>
+            <h4>Bee Suit</h4>
+            <p>Full-body white suits. Check zips are fully closed — especially wrists and ankles. White is calming to bees!</p>
+          </div>
+          <div class="prep-item">
+            <div class="p-emoji">🧤</div>
+            <h4>Gloves + Powder</h4>
+            <p>Dusted with powder to help them slide on easily and create a bee-proof seal at the wrists.</p>
+          </div>
+          <div class="prep-item">
+            <div class="p-emoji">💨</div>
+            <h4>Smoker</h4>
+            <p>Lit with <strong>wet leaves</strong> (cooler, gentler smoke). Ready to use at the hive — never point directly at bees.</p>
+          </div>
+          <div class="prep-item">
+            <div class="p-emoji">📋</div>
+            <h4>Bee Board</h4>
+            <p>Educational display positioned near the Apiary — visible during the hive visit for quick reference.</p>
+          </div>
+        </div>
+
+        <div style="background:white;border-radius:14px;padding:18px 20px;box-shadow:0 3px 12px rgba(0,0,0,0.07);margin:16px 0;">
+          <p style="font-weight:800;color:var(--amber);margin-bottom:12px;">📸 Suiting Up Checklist</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:0.88rem;color:#555;display:flex;gap:8px;align-items:center;"><span>✅</span> Step into suit legs first, then arms</li>
+            <li style="font-size:0.88rem;color:#555;display:flex;gap:8px;align-items:center;"><span>✅</span> Zip up the full suit — front, cuffs, and veil zipper</li>
+            <li style="font-size:0.88rem;color:#555;display:flex;gap:8px;align-items:center;"><span>✅</span> Tuck trouser cuffs into socks if wearing open shoes</li>
+            <li style="font-size:0.88rem;color:#555;display:flex;gap:8px;align-items:center;"><span>✅</span> Pull on gloves and press sleeve over glove cuff to seal</li>
+            <li style="font-size:0.88rem;color:#555;display:flex;gap:8px;align-items:center;"><span>✅</span> Check veil mesh is not touching your face</li>
+            <li style="font-size:0.88rem;color:#555;display:flex;gap:8px;align-items:center;"><span>📸</span> <strong>Group photo before heading to the hive!</strong></li>
+          </ul>
+        </div>
+
+        <div style="background:#e8faf7;border-radius:12px;padding:14px 18px;font-size:0.88rem;color:#1a5a50;">
+          <strong>🎯 Facilitator:</strong> Make the suit-up feel ceremonial — say something like <em>"You're now officially Junior Beekeepers!"</em> Take a group photo before heading to the hive. This is a beloved keepsake moment for guests. 📸
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP B6: At the Apiary — Hive Anatomy -->
+    <div class="flow-step" data-step="B6" onclick="toggleStep(this)" style="border-top: 4px solid #3DBDA7;">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
+          <span class="step-emoji">🏠</span>
+          <h3>At the Apiary — Reading the Hive</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span class="duration-tag" style="background:#e8faf7;color:var(--mint);">⏱ 10 min</span>
+          <span class="toggle-icon" style="color:var(--mint);">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+        <p>At the Apiary, help guests understand the architecture of the hive before opening it. The hive is a marvel of natural engineering — each zone has a purpose.</p>
+
+        <div class="hive-layers">
+          <div class="hive-layer" style="background:#FFF1D0;">
+            <div class="hive-layer-icon">🍯</div>
+            <div>
+              <h4 style="color:var(--amber);">Top Box — Honey Stores</h4>
+              <p style="color:#5a3e00;">Honey is stored at the top because it's <strong>the heaviest</strong>. Bees pack capped honeycomb here — the golden reward of all their foraging work. This is the section beekeepers harvest from.</p>
+            </div>
+          </div>
+          <div class="hive-layer" style="background:#e8f6fd;">
+            <div class="hive-layer-icon">🐣</div>
+            <div>
+              <h4 style="color:#5aadd6;">Middle Box — Brood Zone & Bee Bread</h4>
+              <p style="color:#1a4a65;">The nursery. This is where the queen lays her eggs, larvae develop, and <strong>bee bread</strong> (pollen + honey) is stored to feed the growing larvae. Warm, protected, and the beating heart of the colony.</p>
+            </div>
+          </div>
+          <div class="hive-layer" style="background:#f5f0ff;">
+            <div class="hive-layer-icon">🥜</div>
+            <div>
+              <h4 style="color:#8a4fc7;">Bottom — Queen Cells</h4>
+              <p style="color:#4a2a80;">Queen cells are built at the <strong>bottom edges</strong> of frames — they look like peanut shells hanging down! These special cells are where new queens are raised, fed exclusively on royal jelly until they're ready to hatch.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-box" onclick="this.classList.toggle('revealed')">
+          Where in the wild do different bee species prefer to nest?
+          <div class="quiz-answer">✅ <strong>Asian bees (Apis cerana):</strong> Love dark, enclosed spaces — like a tree hollow, wall cavity, or even Winnie the Pooh's honey pot! 🍯 <strong>Giant & Dwarf bees (Apis dorsata & florea):</strong> Build exposed single combs hanging from tree branches or building overhangs — completely out in the open! </div>
+        </div>
+
+        <div style="background:#e8faf7;border-radius:12px;padding:14px 18px;margin-top:16px;font-size:0.88rem;color:#1a5a50;">
+          <strong>🎯 Facilitator:</strong> Before opening the hive, point to the outside of the box and ask guests to guess which zone is which based on what they've just learned. This makes them feel like experts — and they usually get it right!
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP B7: Smoke the Bees! -->
+    <div class="flow-step" data-step="B7" onclick="toggleStep(this)" style="border-top: 4px solid #3DBDA7;">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
+          <span class="step-emoji">💨</span>
+          <h3>Smoke the Bees — Say Hello! 👋</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span class="duration-tag" style="background:#e8faf7;color:var(--mint);">⏱ 15 min</span>
+          <span class="toggle-icon" style="color:var(--mint);">▼</span>
+        </div>
+      </div>
+      <div class="step-detail" onclick="event.stopPropagation()">
+        <p>Time to open the hive! Use the smoker to calm the bees before lifting the frames. Explain the science of smoke to guests — it's a beautifully elegant evolutionary trick.</p>
+
+        <div style="background:white;border-radius:14px;padding:18px 20px;box-shadow:0 3px 12px rgba(0,0,0,0.07);margin:16px 0;">
+          <p style="font-weight:800;color:var(--amber);margin-bottom:10px;">💨 Why Smoke Works</p>
+          <p style="font-size:0.88rem;color:#555;line-height:1.7;">Smoke <strong>simulates a forest fire</strong> — one of the honeybee's oldest evolutionary threats. When bees smell smoke, their instinct kicks in: they gorge on honey to prepare for potential evacuation. A full belly makes them <strong>docile, slow, and calm</strong>. They're too busy eating to worry about defending!</p>
+          <p style="font-size:0.88rem;color:#555;margin-top:10px;line-height:1.7;">Smoke also <strong>masks alarm pheromones</strong> — so even if one bee gets agitated, its distress signal can't spread to the rest of the colony. We use <strong>wet leaves</strong> for cooler, gentler smoke that won't overheat or harm the bees.</p>
+        </div>
+
+        <div style="background:white;border-radius:14px;padding:18px 20px;box-shadow:0 3px 12px rgba(0,0,0,0.07);">
+          <p style="font-weight:800;color:var(--amber);margin-bottom:12px;">🔍 What to Look For in the Hive</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+            <li style="display:flex;gap:12px;align-items:flex-start;font-size:0.88rem;color:#555;">
+              <span style="font-size:1.2rem;flex-shrink:0;">🥚</span>
+              <div><strong>Eggs</strong> — tiny white grains standing upright in cells, like a grain of rice. Only visible in good light — means the queen was here within 3 days!</div>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start;font-size:0.88rem;color:#555;">
+              <span style="font-size:1.2rem;flex-shrink:0;">🐛</span>
+              <div><strong>Larvae & Capped Brood</strong> — curled white grubs in open cells, brown-capped cells in sealed brood. Look for the different stages side by side!</div>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start;font-size:0.88rem;color:#555;">
+              <span style="font-size:1.2rem;flex-shrink:0;">👑</span>
+              <div><strong>The Queen</strong> — larger, longer abdomen, surrounded by a circle of attentive nurses. Can you spot her? She usually moves deliberately, unlike the workers who scurry.</div>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start;font-size:0.88rem;color:#555;">
+              <span style="font-size:1.2rem;flex-shrink:0;">🟡</span>
+              <div><strong>Bee Bread & Pollen Stores</strong> — multi-coloured packed cells of pollen next to brood — the pantry! Different colours represent different flower sources.</div>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start;font-size:0.88rem;color:#555;">
+              <span style="font-size:1.2rem;flex-shrink:0;">🍯</span>
+              <div><strong>Honey</strong> — capped with white beeswax at the top of frames. Fully ripe honey cells will be completely sealed — ready to harvest!</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="funfact">Bees use different-coloured pollen from many flower species — you can sometimes see rainbow patterns of yellow, orange, red and purple pollen packed into cells side by side. It's the hive's version of a balanced diet! 🌈</div>
+
+        <div style="background:#e8faf7;border-radius:12px;padding:14px 18px;margin-top:16px;font-size:0.88rem;color:#1a5a50;">
+          <strong>🎯 Facilitator:</strong> Move slowly and deliberately at the hive. Narrate what you're seeing in real time. Let guests try puffing the smoker — it gives them agency and makes the moment feel real. End by letting guests hold a frame (if safe) for the ultimate photo moment! 📸
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP B8: Scoop, Top & Taste (moved here) -->
+    <div class="flow-step" data-step="B8" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
+          <span class="step-emoji">🍦</span>
+          <h3>Scoop, Top & Taste Your Creation!</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span class="duration-tag">⏱ 15 min</span>
+          <span class="toggle-icon">▼</span>
+        </div>
+      </div>
+      <div class="step-detail">
+        <p>Back from the Apiary — it's time for the big payoff! The pre-made honey ice cream is waiting. Scoop it into cones or bowls and head to the toppings station — honeycomb you made, edible flowers, and a dramatic honey drizzle. 🍯</p>
+        <ul style="margin:10px 0 0 20px;line-height:2.2;">
+          <li>Break the honeycomb slab into craggy shards for topping</li>
+          <li>Encourage guests to photograph their creation first</li>
+          <li>Do a group "first taste" toast — everyone eats at the same time!</li>
+          <li>Ask: <em>"Can you taste the floral notes from the local honey?"</em></li>
+        </ul>
+        <div class="step-tip">Have extra honey on hand for a dramatic drizzle — this is THE photo moment. The combination of the honeycomb you made + the ice cream you made + honey from the hive you just visited = a full circle moment guests will never forget!</div>
+      </div>
+    </div>
+
+    <!-- STEP B9: Wrap Up -->
+    <div class="flow-step" data-step="B9" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
+          <span class="step-emoji">📜</span>
+          <h3>Wrap-Up & Recipe Handout</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span class="duration-tag">⏱ 10 min</span>
+          <span class="toggle-icon">▼</span>
+        </div>
+      </div>
+      <div class="step-detail">
+        <p>As guests enjoy their ice cream, close warmly. Share what they can do at home to support pollinators — plant native flowers, avoid pesticides, and buy local honey from small producers.</p>
+        <ul style="margin:10px 0 0 20px;line-height:2.2;">
+          <li>Share a brief reflection — ask guests what surprised them most today</li>
+          <li>Share upcoming Sundowner experiences</li>
+          <li>Thank guests sincerely and invite them to leave a review</li>
+          <li>Group photo for Sundowner social media (with consent!) 📸</li>
+        </ul>
+        <div class="step-tip">End on a personal note — reference something specific from the session. Did someone spot the queen? Did someone's honeycomb turn out extra crunchy? These little callbacks make guests feel truly seen and remembered.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="prep" class="section">
+  <h2 class="section-title">✅ Pre-Session Checklist</h2>
+  <p class="section-sub">Click each item to mark it done. Aim for 100% before guests arrive!</p>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-label">Session Readiness: <span id="progress-pct">0%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- ICE CREAM PREP -->
+  <div style="display:flex;align-items:center;gap:10px;margin:10px 0 14px;">
+    <div style="background:var(--honey);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">🍦</div>
+    <h3 style="color:var(--amber);font-size:1rem;text-transform:uppercase;letter-spacing:1px;">Ice Cream — 30 Minutes Before</h3>
+  </div>
+  <ul class="checklist">
+    <li onclick="checkItem(this)"><div class="check-box"></div> Confirm guest count and check for dietary restrictions or allergies</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Set up the ingredient station with labelled bowls and pre-weighed portions</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Pre-chill the heavy cream and milk in the fridge</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Fill ice bucket and ensure rock salt is accessible</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Prepare the Styrofoam box — clean, dry, and ready to be packed with ice</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Check Cuisinart compressor is clean and functioning — run a quick test cycle</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Line baking tray for honeycomb and set out honeycomb ingredients</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Set up toppings station — honeycomb shards, edible flowers, honey drizzle</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Set out serving bowls at the tasting station</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Retrieve the pre-made ice cream batch from freezer — keep hidden for the reveal!</li>
+  </ul>
+
+  <!-- BEE ENCOUNTER PREP -->
+  <div style="display:flex;align-items:center;gap:10px;margin:28px 0 14px;">
+    <div style="background:var(--mint);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">🐝</div>
+    <h3 style="color:var(--mint);font-size:1rem;text-transform:uppercase;letter-spacing:1px;">Bee Encounter — 15 Minutes Before</h3>
+  </div>
+  <ul class="checklist">
+    <li onclick="checkItem(this)"><div class="check-box"></div> Check hive activity — observe that bees are calm and colony is active</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Soak leaves for 10–15 min, load and light the smoker — test smoke temperature on wrist</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Lay out bee suits in guest sizes — check all zips and veils are intact</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Set out beekeeping gloves and powder at the suit-up station</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Position and check the Bee Board near the Apiary</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Prepare honeycomb sample and pollen jar for the theory props</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Brief any co-facilitators on the full session flow and timing</li>
+  </ul>
+
+  <!-- COMMUNICATIONS -->
+  <div style="display:flex;align-items:center;gap:10px;margin:28px 0 14px;">
+    <div style="background:#8a4fc7;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">📱</div>
+    <h3 style="color:#8a4fc7;font-size:1rem;text-transform:uppercase;letter-spacing:1px;">Communications & Photography</h3>
+  </div>
+  <ul class="checklist">
+    <li onclick="checkItem(this)"><div class="check-box"></div> Send guests a reminder message with parking, directions, and what to wear (closed shoes, no strong perfume near bees)</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Confirm weather is suitable — have a backup indoor plan ready if needed</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Fully charge your phone before the session — you'll need it!</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Ask guests for photo consent at the start of the session</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Capture candid shots throughout — cooking, suiting up, hive visit, tasting</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> Take the group suit-up photo before heading to the Apiary</li>
+    <li onclick="checkItem(this)"><div class="check-box"></div> After the session, curate and share the <strong>best 30 photos</strong> with guests via WhatsApp or a shared link</li>
+  </ul>
+
+  <div style="background:linear-gradient(135deg,#e8f0ff,#d8e8ff);border-radius:14px;padding:18px 22px;margin-top:24px;border-left:5px solid #6688cc;">
+    <p style="font-weight:800;color:#3355aa;font-size:0.92rem;margin-bottom:8px;">📸 Photography Guide — Getting the Best 30 Shots</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:10px;">
+      <div style="background:white;border-radius:10px;padding:12px;font-size:0.82rem;color:#333;">
+        <strong style="color:#3355aa;">🍳 Cooking Moments</strong><br>Pouring honey, whisking eggs, honeycomb foam explosion, custard on the spoon test
+      </div>
+      <div style="background:white;border-radius:10px;padding:12px;font-size:0.82rem;color:#333;">
+        <strong style="color:#3355aa;">🥼 Suit Up</strong><br>Guests zipping suits, group line-up, funny mid-dress moments, veil close-ups
+      </div>
+      <div style="background:white;border-radius:10px;padding:12px;font-size:0.82rem;color:#333;">
+        <strong style="color:#3355aa;">🐝 Apiary</strong><br>Smoker in action, frame held up to light, close-up of comb, bee on glove
+      </div>
+      <div style="background:white;border-radius:10px;padding:12px;font-size:0.82rem;color:#333;">
+        <strong style="color:#3355aa;">🍦 Tasting</strong><br>Honey drizzle pour, first lick reaction, bowl close-up with honeycomb topping
+      </div>
+    </div>
+  </div>
+
+  <div class="facilitator-tip" style="margin-top:20px;">
+    The best photos happen in the moment — not posed. Keep your phone accessible throughout but don't let photography interrupt the flow. Designate a natural "photo pause" at suit-up and at the honey drizzle reveal for the guaranteed great shots.
+  </div>
+</section>
+
+<footer>
+  <p>🍯 <strong>The Sundowner</strong> — Nature Experience Centre, Singapore</p>
+  <p style="margin-top:8px;">This guide is for internal facilitator training only. Made with 🐝 and lots of honey.</p>
+</footer>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleStep(el) {
+    el.classList.toggle('open');
+  }
+
+  function selectIceCream(card, type) {
+    document.querySelectorAll('.ic-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+  }
+
+  function checkItem(li) {
+    li.classList.toggle('checked');
+    li.querySelector('.check-box').textContent = li.classList.contains('checked') ? '✓' : '';
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.checklist li');
+    const done = document.querySelectorAll('.checklist li.checked');
+    const pct = Math.round((done.length / all.length) * 100);
+    document.getElementById('progress-pct').textContent = pct + '%';
+    document.getElementById('progress-fill').style.width = pct + '%';
+  }
+
+  function showTab(tab) {
+    document.getElementById('panel-then').style.display = tab === 'then' ? 'block' : 'none';
+    document.getElementById('panel-now').style.display = tab === 'now' ? 'block' : 'none';
+    document.getElementById('btn-then').style.background = tab === 'then' ? 'var(--honey)' : 'white';
+    document.getElementById('btn-then').style.color = tab === 'then' ? 'white' : 'var(--amber)';
+    document.getElementById('btn-now').style.background = tab === 'now' ? 'var(--honey)' : 'white';
+    document.getElementById('btn-now').style.color = tab === 'now' ? 'white' : 'var(--amber)';
+  }
+
+</script>
+
+</body>
+</html>
