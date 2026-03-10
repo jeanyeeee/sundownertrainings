@@ -52,6 +52,19 @@
       margin-top: 14px; font-weight: 600;
       max-width: 560px; margin-inline: auto;
     }
+    .hero-img-wrap {
+      margin: 28px auto 0;
+      max-width: 560px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.28), 0 0 0 4px rgba(255,255,255,0.35);
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 340px;
+    }
     .hero-stats {
       display: flex; justify-content: center; gap: 30px;
       margin-top: 34px; flex-wrap: wrap;
@@ -317,6 +330,7 @@
     /* ====== MOBILE IMPROVEMENTS ====== */
     @media (max-width: 768px) {
       .hero { padding: 70px 16px 60px; min-height: 420px; }
+      .hero-img-wrap img { max-height: 220px; }
 
       .hero-stats { gap: 10px; }
       .stat-pill { padding: 8px 14px; font-size: 0.82rem; }
@@ -505,6 +519,9 @@
   <div class="hero-badge">🍯 Facilitator Training Guide</div>
   <h1>Honey Ice Cream<br>Workshop 🍦</h1>
   <p>From Honeycomb to Cone — a sweet, buzzy food experience at The Sundowner</p>
+  <div class="hero-img-wrap">
+    <img src="assets/hero-honey-icecream.png" alt="Honey ice cream with honeycomb in a speckled bowl">
+  </div>
   <div class="hero-stats">
     <div class="stat-pill"><span>⏱️</span> 2 Hours</div>
     <div class="stat-pill"><span>👥</span> Up to 6 Guests</div>
