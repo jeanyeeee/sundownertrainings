@@ -91,6 +91,45 @@
     .tab-btn:hover { color: var(--amber); }
     .tab-btn.active { color: var(--amber); border-bottom-color: var(--honey); }
 
+    /* HAMBURGER MENU — mobile only */
+    .hamburger-btn {
+      display: none;
+      align-items: center; justify-content: space-between;
+      width: 100%; padding: 15px 20px;
+      border: none; background: white; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700;
+      color: var(--amber);
+    }
+    .hamburger-btn .hb-label { display: flex; align-items: center; gap: 8px; }
+    .hamburger-btn .hb-icon { display: flex; flex-direction: column; gap: 5px; }
+    .hamburger-btn .hb-icon span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--amber); border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .tab-nav.open .hamburger-btn .hb-icon span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .tab-nav.open .hamburger-btn .hb-icon span:nth-child(2) { opacity: 0; }
+    .tab-nav.open .hamburger-btn .hb-icon span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+    .tab-nav-items { display: flex; }
+    @media (max-width: 600px) {
+      .tab-nav {
+        flex-direction: column; overflow-x: visible;
+        justify-content: flex-start;
+      }
+      .hamburger-btn { display: flex; }
+      .tab-nav-items {
+        display: none; flex-direction: column;
+        border-top: 1px solid #f0f0f0;
+      }
+      .tab-nav.open .tab-nav-items { display: flex; }
+      .tab-btn {
+        padding: 14px 20px; text-align: left;
+        border-bottom: none; border-left: 4px solid transparent;
+        font-size: 0.95rem;
+      }
+      .tab-btn.active { border-left-color: var(--honey); border-bottom-color: transparent; background: #fffbf2; }
+    }
+
     /* SECTIONS */
     .section { display: none; padding: 50px 20px; max-width: 880px; margin: 0 auto; }
     .section.active { display: block; }
@@ -348,7 +387,7 @@
       .duration-tag { font-size: 0.72rem; padding: 3px 8px; }
       .section { padding: 30px 14px; }
       .section-title { font-size: 1.6rem; }
-      .tab-btn { padding: 12px 10px; font-size: 0.78rem; }
+      /* tab-btn mobile handled by hamburger styles */
       .bee-species-grid { grid-template-columns: 1fr !important; }
       .bee-role-grid { grid-template-columns: 1fr !important; }
       .hive-layers { flex-direction: column !important; }
@@ -363,7 +402,7 @@
     }
     @media (max-width: 400px) {
       .ingredient-grid { grid-template-columns: 1fr; }
-      .tab-btn { padding: 10px 8px; font-size: 0.72rem; }
+      /* tab-btn 400px handled by hamburger styles */
       .ic-panel-btns { flex-direction: column !important; }
     }
 
@@ -531,12 +570,18 @@
 </div>
 
 <!-- STICKY TAB NAV -->
-<nav class="tab-nav" role="tablist">
-  <button class="tab-btn active" onclick="switchTab('overview', this)">🐝 Overview</button>
-  <button class="tab-btn" onclick="switchTab('ingredients', this)">🥄 Ingredients</button>
-  <button class="tab-btn" onclick="switchTab('tools', this)">🧰 Tools</button>
-  <button class="tab-btn" onclick="switchTab('flow', this)">🗺️ Experience Flow</button>
-  <button class="tab-btn" onclick="switchTab('prep', this)">✅ Pre-Session Prep</button>
+<nav class="tab-nav" id="tabNav" role="tablist">
+  <button class="hamburger-btn" onclick="toggleHamburger()" aria-label="Open menu" aria-expanded="false" id="hamburgerBtn">
+    <span class="hb-label">🐝 Overview</span>
+    <span class="hb-icon"><span></span><span></span><span></span></span>
+  </button>
+  <div class="tab-nav-items">
+    <button class="tab-btn active" onclick="switchTab('overview', this)">🐝 Overview</button>
+    <button class="tab-btn" onclick="switchTab('ingredients', this)">🥄 Ingredients</button>
+    <button class="tab-btn" onclick="switchTab('tools', this)">🧰 Tools</button>
+    <button class="tab-btn" onclick="switchTab('flow', this)">🗺️ Experience Flow</button>
+    <button class="tab-btn" onclick="switchTab('prep', this)">✅ Pre-Session Prep</button>
+  </div>
 </nav>
 
 <!-- ===== OVERVIEW ===== -->
@@ -544,7 +589,7 @@
   <h2 class="section-title">🐝 Experience Overview</h2>
   <p class="section-sub">Everything you need to understand this experience before you lead it.</p>
   <div class="highlight-box">
-    <strong>The Big Idea:</strong> Guests go on a sweet journey — from learning about bees and their incredible world, to getting hands-on with ice cream making using <strong>real local honey</strong>. By the end, they leave with a scoop of ice cream they made themselves and a whole new appreciation for our tiny buzzy friends. 🐝🍦
+    <strong>The Big Idea:</strong> Guests go on a sweet journey — from learning about bees and their incredible world, to getting hands-on with ice cream making using <strong>Australian Multifloral honey</strong>. By the end, they leave with a scoop of ice cream they made themselves and a whole new appreciation for our tiny buzzy friends. 🐝🍦
   </div>
   <div class="overview-grid">
     <div class="ov-card"><div class="icon">🎯</div><h3>Learning Goals</h3><p>Guests understand how bees produce honey, learn the science of ice cream making, and experience the joy of creating something delicious from scratch.</p></div>
@@ -556,10 +601,10 @@
   <div style="margin-top:28px;">
     <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:10px;color:var(--amber);">🌟 What Makes This Special</h3>
     <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:8px;">
-      <li style="background:white;border-radius:12px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">🍯 <strong>Hyper-local honey</strong> — sourced from the actual hive on the Sundowner rooftop</li>
+      <li style="background:white;border-radius:12px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">🍯 <strong>Australian Multi-floral honey</strong> — sourced from the actual hive on the Sundowner rooftop</li>
       <li style="background:white;border-radius:12px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">🔬 <strong>Science meets food</strong> — guests learn the chemistry behind why ice cream freezes the way it does</li>
       <li style="background:white;border-radius:12px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">📜 <strong>Take-home recipe</strong> — guests leave with the recipe and pro tips to recreate it at home</li>
-      <li style="background:white;border-radius:12px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">🐝 <strong>Community impact</strong> — hosted by a women-led, wildlife-protecting team championing urban beekeeping</li>
+      <li style="background:white;border-radius:12px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">🐝 <strong>Community impact</strong> — hosted by a bee-loving team championing urban beekeeping and bee rescues</li>
     </ul>
   </div>
 </section>
@@ -2019,7 +2064,21 @@
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     btn.classList.add('active');
+    // Update hamburger label to active tab name
+    const label = document.querySelector('#hamburgerBtn .hb-label');
+    if (label) label.textContent = btn.textContent;
+    // Close menu on mobile after selection
+    const nav = document.getElementById('tabNav');
+    nav.classList.remove('open');
+    document.getElementById('hamburgerBtn').setAttribute('aria-expanded', 'false');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleHamburger() {
+    const nav = document.getElementById('tabNav');
+    const btn = document.getElementById('hamburgerBtn');
+    const isOpen = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
   }
 
   function toggleStep(el) {
