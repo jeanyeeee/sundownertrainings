@@ -10,7 +10,7 @@ All guides are published via **GitHub Pages** and can be opened directly in any 
 
 | Experience | Link |
 |---|---|
-| 🍦 Honey Ice Cream Workshop | [View Guide](https://jeanyeeee.github.io/sundownertrainings/src/hic.html) |
+| 🍦 Honey Ice Cream Workshop | [View Guide](https://jeanyeeee.github.io/sundownertrainings/index.html) |
 
 > Bookmark the link above and share it with your co-facilitators before each session.
 
